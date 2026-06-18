@@ -1,0 +1,260 @@
+<!--
+  Checklist.html — Checklist avant publication
+  Gardiens des Félins Design System
+  Usage : Imprimer ou utiliser comme référence avant chaque publication
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checklist avant publication — Gardiens des Félins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #11110D;
+      color: #F2EFE6;
+      font-family: 'Inter', Arial, sans-serif;
+      padding: 60px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #B65A2B;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #F2EFE6;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #B65A2B;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #34383B;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 16px;
+      color: #B8B1A5;
+      line-height: 1.5;
+    }
+
+    .checklist li input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      accent-color: #B65A2B;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .checklist li label {
+      cursor: pointer;
+    }
+
+    .checklist li.critical label {
+      color: #F2EFE6;
+      font-weight: 500;
+    }
+
+    .warning-note {
+      background: rgba(209, 154, 58, 0.10);
+      border: 1px solid #D19A3A;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #D19A3A;
+      margin-top: 40px;
+      line-height: 1.6;
+    }
+
+    .warning-note strong {
+      font-weight: 700;
+    }
+
+    .divider {
+      height: 1px;
+      background: #34383B;
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gardiens des Félins</h1>
+  <h2>Checklist avant publication</h2>
+
+  <!-- Section 1 : Vérification des faits -->
+  <div class="section">
+    <p class="section-title">Vérification des faits</p>
+    <ul class="checklist">
+      <li class="critical">
+        <input type="checkbox" id="c1" />
+        <label for="c1">Toutes les statistiques citées sont vérifiées et sourcées.</label>
+      </li>
+      <li class="critical">
+        <input type="checkbox" id="c2" />
+        <label for="c2">Aucune loi, date ou affaire judiciaire n'a été inventée.</label>
+      </li>
+      <li class="critical">
+        <input type="checkbox" id="c3" />
+        <label for="c3">Les données non vérifiées sont marquées "à vérifier avant publication".</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c4" />
+        <label for="c4">Les sources utilisées sont citées ou disponibles en interne.</label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 2 : Légalité et accusations -->
+  <div class="section">
+    <p class="section-title">Légalité et accusations</p>
+    <ul class="checklist">
+      <li class="critical">
+        <input type="checkbox" id="c5" />
+        <label for="c5">Aucune personne n'est accusée nommément sans source publique fiable.</label>
+      </li>
+      <li class="critical">
+        <input type="checkbox" id="c6" />
+        <label for="c6">Le langage pour les suspects ou mineurs est neutre et prudent.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c7" />
+        <label for="c7">Les affirmations légales (illégal / légal) sont vérifiées pour le pays concerné.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c8" />
+        <label for="c8">Le contenu n'est pas diffamatoire et ne viole pas la présomption d'innocence.</label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 3 : Contenu sensible -->
+  <div class="section">
+    <p class="section-title">Contenu sensible</p>
+    <ul class="checklist">
+      <li class="critical">
+        <input type="checkbox" id="c9" />
+        <label for="c9">L'avertissement sensible est présent si le sujet le nécessite.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c10" />
+        <label for="c10">Aucune image graphique ou perturbante n'est utilisée.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c11" />
+        <label for="c11">Aucune description détaillée des méthodes de violence.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c12" />
+        <label for="c12">Les visuels utilisés sont symboliques et non-graphiques.</label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 4 : CTA et liens -->
+  <div class="section">
+    <p class="section-title">CTA et liens</p>
+    <ul class="checklist">
+      <li class="critical">
+        <input type="checkbox" id="c13" />
+        <label for="c13">Le lien CTA est correct : https://linktr.ee/gardiensdesfelins</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c14" />
+        <label for="c14">La slide CTA est présente en dernière position.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c15" />
+        <label for="c15">Les 3 actions sont présentes : Signez / Rejoignez-nous / Partagez.</label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 5 : Visuel et lisibilité -->
+  <div class="section">
+    <p class="section-title">Visuel et lisibilité</p>
+    <ul class="checklist">
+      <li class="critical">
+        <input type="checkbox" id="c16" />
+        <label for="c16">Texte lisible sur mobile (testé en vue réduite).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c17" />
+        <label for="c17">Contraste suffisant entre texte et fond.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c18" />
+        <label for="c18">Format correct : 1080 × 1350 px (carousel) ou 1080 × 1920 px (story).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c19" />
+        <label for="c19">Logo ou nom de l'association visible.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c20" />
+        <label for="c20">Cohérence visuelle avec le design system (couleurs, polices).</label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section 6 : Légende et hashtags -->
+  <div class="section">
+    <p class="section-title">Légende et hashtags</p>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c21" />
+        <label for="c21">La légende est rédigée (courte, percutante, avec CTA).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c22" />
+        <label for="c22">Les hashtags sont préparés (15 à 25 recommandés).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c23" />
+        <label for="c23">L'alt text est rédigé pour chaque slide.</label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="warning-note">
+    <strong>⚠ Règle absolue :</strong> En cas de doute sur un fait, une accusation ou une formulation légale,
+    ne publiez pas avant vérification. Il est toujours préférable de retarder une publication
+    plutôt que de diffuser une information inexacte qui pourrait nuire à la crédibilité de l'association.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!--
+  SensitiveWarning.html — Composant d'avertissement contenu sensible
+  Gardiens des Félins Design System
+  Usage : Ajouter ce composant sur la slide 2 quand le sujet est sensible
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sensitive Warning — Gardiens des Félins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/variables.css" />
+  <style>
+    body {
+      background: #11110D;
+      padding: 40px;
+      font-family: 'Inter', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    /* ── Version barre pleine largeur (pour slides) ── */
+    .warning-bar {
+      background-color: var(--color-warning-gold, #D19A3A);
+      color: var(--color-background, #11110D);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    /* ── Version bloc compact (pour petits espaces) ── */
+    .warning-badge {
+      background-color: var(--color-warning-gold, #D19A3A);
+      color: var(--color-background, #11110D);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── Version panneau avec explication ── */
+    .warning-panel {
+      background-color: rgba(209, 154, 58, 0.12);
+      border: 1px solid var(--color-warning-gold, #D19A3A);
+      border-left: 6px solid var(--color-warning-gold, #D19A3A);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      max-width: 700px;
+    }
+
+    .warning-panel__title {
+      color: var(--color-warning-gold, #D19A3A);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .warning-panel__text {
+      color: #B8B1A5;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .label {
+      color: #B8B1A5;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Variante 1 : Barre pleine largeur (slide carousel) -->
+  <div>
+    <p class="label">Variante 1 — Barre de slide (pleine largeur)</p>
+    <div class="warning-bar">
+      ⚠ Attention : ce post aborde un sujet sensible.
+    </div>
+  </div>
+
+  <!-- Variante 2 : Badge compact -->
+  <div>
+    <p class="label">Variante 2 — Badge compact</p>
+    <div class="warning-badge">
+      ⚠ Sujet sensible
+    </div>
+  </div>
+
+  <!-- Variante 3 : Panneau avec explication -->
+  <div>
+    <p class="label">Variante 3 — Panneau explicatif</p>
+    <div class="warning-panel">
+      <div class="warning-panel__title">⚠ Avertissement</div>
+      <p class="warning-panel__text">
+        Ce post aborde un sujet sensible lié à la violence envers les animaux.<br />
+        Aucune image graphique n'est utilisée. Ce contenu vise à informer et mobiliser.
+      </p>
+    </div>
+  </div>
+
+  <!-- Variante 4 : Texte dans le slide (vérification) -->
+  <div>
+    <p class="label">Variante 4 — Marqueur de vérification</p>
+    <div style="background: #181A1A; padding: 16px 20px; border-radius: 6px; border-left: 4px solid #D19A3A; max-width: 500px;">
+      <span style="color: #D19A3A; font-size: 14px; font-weight: 600;">
+        ⚠️ à vérifier avant publication
+      </span>
+    </div>
+  </div>
+
+</body>
+</html>

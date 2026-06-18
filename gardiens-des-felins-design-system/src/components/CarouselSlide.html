@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel Slide — Gardiens des Félins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/carousel.css" />
+
+  <style>
+    /* Aperçu uniquement — échelle réduite pour le navigateur */
+    body {
+      background: #0a0a08;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 40px;
+      min-height: 100vh;
+    }
+    .carousel-frame {
+      transform: scale(0.35);
+      transform-origin: top left;
+      margin-bottom: -850px;
+      margin-right: -700px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════
+       SLIDE 1 — HOOK
+  ════════════════════════════════════ -->
+  <div class="carousel-frame slide--hook">
+
+    <!-- Header -->
+    <div class="slide-header">
+      <span class="slide-number">01 / 08</span>
+      <span class="slide-tag">Campagne</span>
+    </div>
+
+    <!-- Corps -->
+    <div class="slide-body">
+      <p class="eyebrow">Gardiens des Félins</p>
+      <h1 class="headline headline--hero">
+        NOUS DÉNONÇONS
+      </h1>
+      <p class="body-text">
+        La violence envers les animaux ne doit jamais<br />
+        devenir un contenu de divertissement.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="slide-footer">
+      <span class="org-name">Gardiens des Félins</span>
+      <span class="footer-link">linktr.ee/gardiensdesfelins</span>
+    </footer>
+
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       SLIDE 2 — CONTEXTE (avec avertissement sensible)
+  ════════════════════════════════════ -->
+  <div class="carousel-frame slide--panel">
+
+    <!-- Avertissement sensible -->
+    <div class="slide-warning-bar">
+      ⚠ Attention : ce post aborde un sujet sensible.
+    </div>
+
+    <!-- Header -->
+    <div class="slide-header" style="margin-top: 48px;">
+      <span class="slide-number">02 / 08</span>
+      <span class="slide-tag">Contexte</span>
+    </div>
+
+    <!-- Corps -->
+    <div class="slide-body">
+      <p class="eyebrow">Ce qui se passe</p>
+      <h2 class="headline">
+        CE QUI SE PASSE
+      </h2>
+      <p class="body-text">
+        Des contenus violents peuvent circuler en ligne,<br />
+        être partagés, commentés et parfois monétisés.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="slide-footer">
+      <span class="org-name">Gardiens des Félins</span>
+      <span class="footer-link">linktr.ee/gardiensdesfelins</span>
+    </footer>
+
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       SLIDE 6 — DÉNONCIATION
+  ════════════════════════════════════ -->
+  <div class="carousel-frame slide--denounce">
+
+    <!-- Header -->
+    <div class="slide-header">
+      <span class="slide-number">06 / 08</span>
+      <span class="slide-tag">Dénonciation</span>
+    </div>
+
+    <!-- Corps -->
+    <div class="slide-body">
+      <p class="eyebrow">Notre position</p>
+      <h2 class="headline">NOUS DÉNONÇONS</h2>
+      <ul class="denounce-list">
+        <li>La banalisation de la violence envers les animaux</li>
+        <li>La diffusion de contenus cruels sur les plateformes</li>
+        <li>L'inaction face aux signalements de maltraitance</li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="slide-footer">
+      <span class="org-name">Gardiens des Félins</span>
+      <span class="footer-link">linktr.ee/gardiensdesfelins</span>
+    </footer>
+
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       SLIDE 8 — CTA FINAL
+  ════════════════════════════════════ -->
+  <div class="carousel-frame slide--cta">
+
+    <!-- Header -->
+    <div class="slide-header">
+      <span class="slide-number">08 / 08</span>
+    </div>
+
+    <!-- Corps CTA -->
+    <div class="slide-body">
+      <div class="cta-group">
+        <p class="eyebrow">Association Gardiens des Félins</p>
+        <h2 class="cta-headline">AGISSEZ MAINTENANT</h2>
+
+        <div class="cta-action">
+          Signez la pétition<br />
+          Rejoignez-nous<br />
+          Partagez ce post
+        </div>
+
+        <a href="https://linktr.ee/gardiensdesfelins" class="cta-link">
+          linktr.ee/gardiensdesfelins
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="slide-footer">
+      <span class="org-name">Gardiens des Félins</span>
+      <span class="footer-link">Protection animale · France</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
