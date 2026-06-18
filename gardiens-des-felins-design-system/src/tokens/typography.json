@@ -1,0 +1,48 @@
+{
+  "fontFamily": {
+    "headline": {
+      "value": "'Playfair Display', Georgia, 'Times New Roman', serif",
+      "description": "Police de titre — serif éditoriale dramatique",
+      "canva": "Playfair Display",
+      "fallback": "Georgia"
+    },
+    "body": {
+      "value": "'Inter', Arial, Helvetica, sans-serif",
+      "description": "Police de corps — sans-serif propre et lisible",
+      "canva": "Inter",
+      "fallback": "Arial"
+    }
+  },
+  "fontSize": {
+    "heroTitle": { "value": "52px", "mobile": "38px" },
+    "slideTitle": { "value": "42px", "mobile": "32px" },
+    "subTitle": { "value": "28px", "mobile": "22px" },
+    "eyebrow": { "value": "13px", "mobile": "12px" },
+    "body": { "value": "20px", "mobile": "17px" },
+    "bodySmall": { "value": "16px", "mobile": "14px" },
+    "cta": { "value": "22px", "mobile": "18px" },
+    "url": { "value": "16px", "mobile": "14px" },
+    "footer": { "value": "11px", "mobile": "10px" },
+    "slideNumber": { "value": "12px", "mobile": "11px" },
+    "warning": { "value": "14px", "mobile": "13px" }
+  },
+  "fontWeight": {
+    "regular": "400",
+    "medium": "500",
+    "semiBold": "600",
+    "bold": "700",
+    "extraBold": "800"
+  },
+  "textTransform": {
+    "headline": "uppercase",
+    "eyebrow": "uppercase",
+    "body": "none",
+    "cta": "uppercase"
+  },
+  "rules": {
+    "headline": "Toujours en majuscules. Playfair Display Bold. Lignes courtes.",
+    "body": "Inter Regular. Maximum 4 lignes par slide.",
+    "eyebrow": "Inter SemiBold. Majuscules. Couleur accentOrange.",
+    "slideText": "Tout texte de slide doit être lisible sur mobile sans zoom."
+  }
+}

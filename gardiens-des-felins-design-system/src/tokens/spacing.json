@@ -1,0 +1,22 @@
+{
+  "spacing": {
+    "1": "4px", "2": "8px", "3": "12px", "4": "16px",
+    "5": "20px", "6": "24px", "8": "32px", "10": "40px",
+    "12": "48px", "16": "64px", "20": "80px"
+  },
+  "layout": {
+    "slideMargin": { "value": "60px", "description": "Marge intérieure standard d'une slide carousel" },
+    "storyMargin": { "value": "80px", "description": "Marge intérieure d'une story" },
+    "safeZoneTop": { "value": "120px", "description": "Zone de sécurité en haut des stories" },
+    "safeZoneBottom": { "value": "180px", "description": "Zone de sécurité en bas des stories" },
+    "gridUnit": { "value": "8px", "description": "Unité de grille de base" },
+    "sectionGap": { "value": "48px", "description": "Espacement entre sections" },
+    "elementGap": { "value": "16px", "description": "Espacement entre éléments" }
+  },
+  "borderRadius": {
+    "sm": "4px", "md": "8px", "lg": "12px", "full": "9999px"
+  },
+  "borderWidth": {
+    "thin": "1px", "medium": "2px", "thick": "4px", "accent": "8px"
+  }
+}

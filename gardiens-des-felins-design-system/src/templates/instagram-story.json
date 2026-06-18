@@ -1,0 +1,14 @@
+{
+  "template": {
+    "name": "Instagram Story — Gardiens des Félins",
+    "format": "instagram-story",
+    "dimensions": { "width": 1080, "height": 1920, "ratio": "9:16" },
+    "safeZone": { "top": 120, "bottom": 180, "left": 80, "right": 80 },
+    "defaultFrames": 3,
+    "frames": [
+      { "position": 1, "role": "hook", "background": "#11110D", "elements": { "title": "[TITRE COURT]", "subtitle": "[1 phrase]", "swipeHint": "→ Swipez pour en savoir plus" } },
+      { "position": 2, "role": "content", "background": "#181A1A", "elements": { "warning": "[Si sensible : Attention : ce post aborde un sujet sensible.]", "title": "[TITRE SECTION]", "body": "[Corps court — 3 à 5 lignes]" } },
+      { "position": 3, "role": "cta", "background": "#11110D", "centered": true, "elements": { "logo": "https://i.imgur.com/JPdiSHg.jpeg", "ctaHeadline": "AGISSEZ", "actions": ["Signez la pétition", "Rejoignez-nous", "Partagez"], "url": "linktr.ee/gardiensdesfelins" } }
+    ]
+  }
+}

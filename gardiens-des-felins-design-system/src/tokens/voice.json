@@ -1,0 +1,50 @@
+{
+  "voice": {
+    "language": "fr",
+    "tone": ["urgent", "sérieux", "compassionnel", "militant", "factuel", "clair", "non-sensationnaliste"],
+    "goals": ["informer", "dénoncer", "mobiliser", "pousser à signer la pétition", "recruter des membres", "pousser au partage"],
+    "avoid": ["affirmations exagérées", "insultes", "langage conspirationniste", "paragraphes trop longs", "fausse certitude", "accusations non vérifiées"]
+  },
+  "campaignLanguage": {
+    "openings": ["NOUS DÉNONÇONS", "NOUS EXIGEONS", "CE QUI SE PASSE", "POURQUOI C'EST GRAVE", "AGISSEZ MAINTENANT"],
+    "slogans": [
+      "Internet n'a pas de frontières. La loi, si.",
+      "Si nous nous taisons, ils continueront.",
+      "Un animal n'existe pas pour divertir Internet.",
+      "Ce n'est pas un cas isolé.",
+      "Ce n'est pas une question de pays. C'est une question de protection.",
+      "Protéger les animaux, c'est aussi refuser la banalisation de la violence.",
+      "Chaque partage banalise la souffrance.",
+      "Chaque silence laisse la violence se propager."
+    ],
+    "sensitivePreamble": "Attention : ce post aborde un sujet sensible.",
+    "unverifiedMark": "⚠️ à vérifier avant publication",
+    "neutralPhrases": [
+      "selon les informations disponibles",
+      "une affaire récente a suscité l'indignation",
+      "les faits doivent être traités avec prudence"
+    ]
+  },
+  "cta": {
+    "petition": "Signez la pétition",
+    "join": "Rejoignez-nous",
+    "share": "Partagez ce post",
+    "link": "https://linktr.ee/gardiensdesfelins",
+    "linkShort": "linktr.ee/gardiensdesfelins",
+    "defaultCTASlide": ["AGISSEZ MAINTENANT", "Signez la pétition", "Rejoignez-nous", "Partagez ce post", "https://linktr.ee/gardiensdesfelins"]
+  },
+  "hashtags": {
+    "permanent": ["#gardiensdesfelins", "#protectionanimale", "#bienêtreanimale", "#droitsdesanimaux", "#activismeanimal", "#animalwelfare", "#animalrights"],
+    "campaign": ["#violenceenligne", "#contenusviolents", "#signalementanimal", "#cruautéanimale", "#mobilisation", "#pétition", "#sensibilisation"]
+  },
+  "checklistBeforePosting": [
+    "Sources vérifiées ?",
+    "Noms / accusations légales vérifiés ?",
+    "Avertissement contenu sensible ajouté si nécessaire ?",
+    "Lien CTA correct ? (https://linktr.ee/gardiensdesfelins)",
+    "Images non-graphiques ou floutées ?",
+    "Texte lisible sur mobile ?",
+    "Aucune statistique, loi ou date inventée ?",
+    "Données non vérifiées marquées 'à vérifier avant publication' ?"
+  ]
+}

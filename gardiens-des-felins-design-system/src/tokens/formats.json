@@ -1,0 +1,32 @@
+{
+  "formats": {
+    "instagramCarousel": {
+      "width": 1080, "height": 1350, "ratio": "4:5",
+      "slidesDefault": 8, "slidesPreferred": 8,
+      "format": "PNG", "margin": 60,
+      "description": "Format principal pour les posts carousel Instagram"
+    },
+    "instagramStory": {
+      "width": 1080, "height": 1920, "ratio": "9:16",
+      "framesDefault": 3, "format": "PNG ou MP4",
+      "safeZoneTop": 120, "safeZoneBottom": 180, "margin": 80,
+      "description": "Format story Instagram et Facebook"
+    },
+    "instagramSquare": {
+      "width": 1080, "height": 1080, "ratio": "1:1",
+      "format": "PNG", "description": "Format carré alternatif"
+    }
+  },
+  "carousel": {
+    "structure": {
+      "slide1": { "role": "Hook", "required": true },
+      "slide2": { "role": "Contexte", "required": true, "warningIfSensitive": true },
+      "slide3": { "role": "Enjeux", "required": true },
+      "slide4": { "role": "Mécanisme caché", "required": true },
+      "slide5": { "role": "Dimension globale", "required": false },
+      "slide6": { "role": "Dénonciation", "required": true, "listItems": 3 },
+      "slide7": { "role": "Demandes", "required": true, "listItems": 3 },
+      "slide8": { "role": "CTA", "required": true, "hasCTA": true }
+    }
+  }
+}

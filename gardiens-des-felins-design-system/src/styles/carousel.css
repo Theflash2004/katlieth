@@ -1,0 +1,35 @@
+/* Gardiens des Félins — Styles Carousel */
+@import './variables.css';
+
+.carousel-frame {
+  width: var(--carousel-width);
+  height: var(--carousel-height);
+  background-color: var(--color-background);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: var(--slide-margin);
+}
+.carousel-frame::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: var(--border-accent); background-color: var(--color-accent-orange);
+}
+.slide--panel { background-color: var(--color-panel); }
+.slide-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-8); }
+.slide-tag { font-size: var(--size-eyebrow); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--color-accent-orange); background-color: rgba(182,90,43,0.12); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); }
+.slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: var(--space-6); }
+.slide-warning-bar { background-color: var(--color-warning-gold); color: var(--color-background); font-size: var(--size-warning); font-weight: var(--weight-semibold); padding: var(--space-3) var(--slide-margin); position: absolute; top: var(--border-accent); left: 0; right: 0; display: flex; align-items: center; gap: var(--space-2); z-index: 10; }
+.denounce-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-5); }
+.denounce-list li { font-size: 22px; color: var(--color-cream-text); padding-left: var(--space-8); position: relative; }
+.denounce-list li::before { content: "•"; color: var(--color-accent-orange); position: absolute; left: 0; font-size: 1.4em; top: 4px; }
+.slide--cta { align-items: center; text-align: center; }
+.slide--cta .slide-body { align-items: center; gap: var(--space-8); }
+.cta-group { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); }
+.cta-headline { font-family: var(--font-headline); font-size: 38px; font-weight: var(--weight-bold); text-transform: uppercase; color: var(--color-accent-orange); letter-spacing: var(--tracking-wide); line-height: var(--leading-tight); }
+.cta-action { font-size: var(--size-cta); font-weight: var(--weight-bold); color: var(--color-cream-text); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.cta-link { font-size: 18px; color: var(--color-warning-gold); text-decoration: none; }
+.slide-footer { margin-top: var(--space-8); display: flex; justify-content: space-between; align-items: center; border-top: var(--border-thin) solid var(--color-line); padding-top: var(--space-4); }
+.org-name { font-size: var(--size-footer); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-muted-text); }
+.footer-link { font-size: var(--size-footer); color: var(--color-muted-text); text-decoration: none; }
+.quote-block { border-left: var(--border-accent) solid var(--color-accent-orange); padding: var(--space-5) var(--space-6); background-color: var(--color-panel-alt); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.quote-block__text { font-family: var(--font-headline); font-size: var(--size-subtitle); font-style: italic; color: var(--color-cream-text); line-height: var(--leading-relaxed); }
+.dark-panel { background-color: var(--color-panel-alt); border-radius: var(--radius-lg); padding: var(--space-8); border: var(--border-thin) solid var(--color-line); }

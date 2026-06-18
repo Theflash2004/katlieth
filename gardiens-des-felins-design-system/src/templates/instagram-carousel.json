@@ -1,0 +1,24 @@
+{
+  "template": {
+    "name": "Instagram Carousel — Gardiens des Félins",
+    "format": "instagram-carousel",
+    "dimensions": { "width": 1080, "height": 1350, "ratio": "4:5" },
+    "defaultSlides": 8,
+    "colors": {
+      "background": "#11110D", "panel": "#181A1A", "panelAlt": "#202326",
+      "creamText": "#F2EFE6", "mutedText": "#B8B1A5",
+      "accentOrange": "#B65A2B", "warningGold": "#D19A3A", "line": "#34383B"
+    },
+    "fonts": { "headline": "Playfair Display Bold", "body": "Inter Regular", "accent": "Inter SemiBold" },
+    "slides": [
+      { "position": 1, "role": "hook", "background": "#11110D", "elements": { "eyebrow": "Gardiens des Félins", "title": "[TITRE ACCROCHE EN MAJUSCULES]", "subtitle": "[Sous-titre court]" } },
+      { "position": 2, "role": "context", "background": "#181A1A", "sensitiveWarning": true, "elements": { "title": "CE QUI SE PASSE", "body": "[Explication simple — 2 à 4 lignes]" } },
+      { "position": 3, "role": "why-it-matters", "background": "#11110D", "elements": { "title": "POURQUOI C'EST GRAVE", "body": "[Impact — 3 à 5 lignes]" } },
+      { "position": 4, "role": "hidden-mechanism", "background": "#181A1A", "elements": { "title": "CE QU'ON NE VOIT PAS", "body": "[Mécanisme caché]" } },
+      { "position": 5, "role": "global-dimension", "background": "#11110D", "elements": { "title": "INTERNET N'A PAS DE FRONTIÈRES. LA LOI, SI.", "body": "[Plateformes, lois]" } },
+      { "position": 6, "role": "denounce", "background": "#181A1A", "elements": { "title": "NOUS DÉNONÇONS", "list": ["[Point 1]", "[Point 2]", "[Point 3]"] } },
+      { "position": 7, "role": "demands", "background": "#11110D", "elements": { "title": "CE QUE NOUS DEMANDONS", "list": ["[Demande 1]", "[Demande 2]", "[Demande 3]"] } },
+      { "position": 8, "role": "cta", "background": "#11110D", "centered": true, "elements": { "logo": "https://i.imgur.com/JPdiSHg.jpeg", "ctaHeadline": "AGISSEZ MAINTENANT", "actions": ["Signez la pétition", "Rejoignez-nous", "Partagez ce post"], "url": "https://linktr.ee/gardiensdesfelins" } }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "campaignBrief": {
+    "version": "1.0",
+    "association": "Gardiens des Félins",
+    "instructions": "Remplissez ce brief avant chaque campagne. Collez-le dans Claude pour générer le contenu.",
+    "topic": { "label": "SUJET", "value": "[Décrivez le sujet en 1 à 3 phrases]" },
+    "context": { "label": "CONTEXTE / NOTES", "value": "[Collez ici vos notes brutes, faits, résumé d'article, ou idée]" },
+    "sources": { "label": "SOURCES", "value": "[Collez ici les liens, noms d'articles, ou écrivez 'pas de source pour l'instant']", "warning": "Si aucune source n'est disponible, Claude marquera les données comme 'à vérifier avant publication'" },
+    "goal": { "label": "OBJECTIF", "options": ["Informer", "Dénoncer", "Mobiliser", "Signatures de pétition", "Recruter des bénévoles", "Sensibiliser"], "value": "[Choisissez un ou plusieurs objectifs]" },
+    "platform": { "label": "PLATEFORME", "defaultValue": "Carousel Instagram + Story", "value": "[Indiquez le ou les formats souhaités]" },
+    "cta": { "label": "CTA", "defaultValue": "Signer la pétition + rejoindre via Linktree", "link": "https://linktr.ee/gardiensdesfelins", "value": "[Confirmez ou modifiez l'appel à l'action]" },
+    "sensitiveContent": { "label": "CONTENU SENSIBLE", "value": "[Oui / Non / Incertain]" },
+    "specialRequirements": { "label": "EXIGENCES PARTICULIÈRES", "value": "[Non-graphique / urgent / éducatif / angle France-Europe / loi spécifique / etc.]" },
+    "tone": { "label": "TON", "defaultValue": "Urgent, sérieux, factuel, compassionnel, militant", "value": "[Confirmez ou précisez le ton souhaité]" },
+    "verifiedFacts": { "label": "FAITS VÉRIFIÉS", "value": "[Listez ici les faits vérifiés utilisables directement]" },
+    "unverifiedFacts": { "label": "FAITS NON VÉRIFIÉS", "value": "[Listez ici les éléments à marquer 'à vérifier avant publication']" },
+    "forbiddenElements": { "label": "À NE PAS INCLURE", "value": "[Noms à ne pas citer / éléments à éviter]" },
+    "deadline": { "label": "DATE DE PUBLICATION", "value": "[JJ/MM/AAAA ou 'dès que possible']" }
+  }
+}

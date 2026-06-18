@@ -1,0 +1,44 @@
+{
+  "color": {
+    "background": {
+      "value": "#11110D",
+      "description": "Fond principal — presque noir, très sombre",
+      "usage": "Fond de toutes les slides par défaut"
+    },
+    "panel": {
+      "value": "#181A1A",
+      "description": "Panneau légèrement relevé",
+      "usage": "Fond alternatif, blocs de contenu, slides paires"
+    },
+    "panelAlt": {
+      "value": "#202326",
+      "description": "Panneau alternatif plus clair",
+      "usage": "Cartes imbriquées, blocs de citation, listes"
+    },
+    "creamText": {
+      "value": "#F2EFE6",
+      "description": "Texte principal — crème blanc chaud",
+      "usage": "Titres, texte principal sur fond sombre"
+    },
+    "mutedText": {
+      "value": "#B8B1A5",
+      "description": "Texte atténué — gris chaud",
+      "usage": "Corps de texte, sous-titres, légendes"
+    },
+    "accentOrange": {
+      "value": "#B65A2B",
+      "description": "Orange militant — couleur accent principale",
+      "usage": "Eyebrows, puces, soulignements, accents, CTA"
+    },
+    "warningGold": {
+      "value": "#D19A3A",
+      "description": "Or alerte",
+      "usage": "Avertissements, liens URL, données à vérifier, highlights"
+    },
+    "line": {
+      "value": "#34383B",
+      "description": "Ligne de séparation — gris très sombre",
+      "usage": "Dividers, bordures, séparateurs de footer"
+    }
+  }
+}

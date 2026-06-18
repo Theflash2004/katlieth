@@ -1,0 +1,33 @@
+{
+  "name": "gardiens-des-felins-design-system",
+  "version": "1.0.0",
+  "description": "Système de design militant pour les campagnes de sensibilisation — Association Gardiens des Félins",
+  "private": true,
+  "scripts": {
+    "preview": "vite preview",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext .jsx,.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^5.0.0",
+    "eslint": "^8.0.0"
+  },
+  "keywords": [
+    "design-system",
+    "animal-protection",
+    "activist",
+    "social-media",
+    "instagram",
+    "canva",
+    "french",
+    "gardiens-des-felins"
+  ],
+  "author": "Association Gardiens des Félins",
+  "license": "CC-BY-NC-SA-4.0"
+}
