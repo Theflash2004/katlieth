@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram Unfollow Tracker</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    header svg { flex-shrink: 0; }
+
+    header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; }
+    header p  { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 2px; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 32px 16px; }
+
+    .how-to {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    .how-to h2 { font-size: 0.95rem; color: #aaa; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em; }
+
+    .steps { display: flex; flex-direction: column; gap: 8px; }
+    .step  { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; color: #ccc; }
+    .step-num {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      border-radius: 50%;
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .drop-area {
+      border: 2px dashed #333;
+      border-radius: 14px;
+      padding: 40px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      background: #111;
+      position: relative;
+    }
+    .drop-area:hover, .drop-area.dragover {
+      border-color: #fd1d1d;
+      background: #1a0a0a;
+    }
+    .drop-area input[type=file] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .drop-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .drop-area h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .drop-area p  { font-size: 0.82rem; color: #888; }
+
+    .snapshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    @media (max-width: 600px) { .snapshot-grid { grid-template-columns: 1fr; } }
+
+    .snapshot-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .snapshot-card h3 { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+    .snap-info { font-size: 0.9rem; color: #eee; }
+    .snap-info strong { display: block; font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .snap-info span { color: #777; font-size: 0.78rem; }
+
+    .no-snap { color: #555; font-size: 0.85rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d);
+      color: #fff; border: none; border-radius: 8px;
+      padding: 10px 20px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn:not(:disabled):hover { opacity: .85; }
+    .btn-danger {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #ff6b6b;
+    }
+    .btn-danger:hover { background: #2a1010 !important; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+
+    .results { display: flex; flex-direction: column; gap: 20px; }
+
+    .result-section {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .result-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .result-header h3 { font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .badge {
+      font-size: 0.75rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px;
+    }
+    .badge-red   { background: #3d0a0a; color: #ff6b6b; }
+    .badge-green { background: #0a2a0a; color: #6bff6b; }
+    .badge-blue  { background: #0a1a3d; color: #6bb5ff; }
+
+    .user-list { padding: 8px 0; max-height: 320px; overflow-y: auto; }
+    .user-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px;
+      transition: background .15s;
+    }
+    .user-item:hover { background: #181818; }
+    .user-left { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.85rem; color: #fff; flex-shrink: 0;
+    }
+    .username { font-size: 0.9rem; font-weight: 600; }
+    .user-since { font-size: 0.75rem; color: #777; margin-top: 1px; }
+    .user-item a {
+      font-size: 0.78rem; color: #888; text-decoration: none;
+      padding: 4px 10px; border: 1px solid #2a2a2a; border-radius: 6px;
+      transition: border-color .2s, color .2s;
+    }
+    .user-item a:hover { border-color: #555; color: #ccc; }
+
+    .empty-state { padding: 28px 20px; text-align: center; color: #555; font-size: 0.88rem; }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #111; border: 1px solid #222; border-radius: 10px;
+      padding: 16px; text-align: center;
+    }
+    .stat-card .num { font-size: 1.6rem; font-weight: 800; }
+    .stat-card .lbl { font-size: 0.75rem; color: #777; margin-top: 2px; text-transform: uppercase; letter-spacing: .05em; }
+    .red   { color: #ff6b6b; }
+    .green { color: #6bff6b; }
+    .blue  { color: #6bb5ff; }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: #222; border: 1px solid #333; border-radius: 10px;
+      padding: 12px 18px; font-size: 0.88rem; color: #eee;
+      box-shadow: 0 8px 24px rgba(0,0,0,.5);
+      transform: translateY(80px); opacity: 0;
+      transition: transform .3s, opacity .3s;
+      z-index: 999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    .search-box {
+      width: 100%; background: #1a1a1a; border: 1px solid #2a2a2a;
+      border-radius: 8px; padding: 8px 14px; color: #eee;
+      font-size: 0.88rem; margin: 12px 20px 4px; width: calc(100% - 40px);
+    }
+    .search-box:focus { outline: none; border-color: #555; }
+  </style>
+</head>
+<body>
+
+<header>
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+  </svg>
+  <div>
+    <h1>Unfollow Tracker</h1>
+    <p>Compare Instagram data exports — no login, no scraping, 100% private</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="how-to">
+    <h2>How to get your data</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><span>Open Instagram → <strong>Settings</strong> → <strong>Your activity</strong> → <strong>Download your information</strong></span></div>
+      <div class="step"><div class="step-num">2</div><span>Select <strong>JSON</strong> format, choose <strong>Followers and following</strong>, request download</span></div>
+      <div class="step"><div class="step-num">3</div><span>Instagram emails you a <strong>.zip file</strong> — drop it below to save a snapshot</span></div>
+      <div class="step"><div class="step-num">4</div><span>Repeat in a few days/weeks and drop the new zip — the tool shows who unfollowed</span></div>
+    </div>
+  </div>
+
+  <div class="drop-area" id="dropArea">
+    <input type="file" id="fileInput" accept=".zip,.json" />
+    <div class="drop-icon">📦</div>
+    <h3>Drop your Instagram export ZIP here</h3>
+    <p>or click to browse — your data never leaves your device</p>
+  </div>
+
+  <br />
+
+  <div class="snapshot-grid">
+    <div class="snapshot-card">
+      <h3>Previous snapshot</h3>
+      <div id="snapOld"><span class="no-snap">No snapshot saved yet</span></div>
+    </div>
+    <div class="snapshot-card">
+      <h3>Latest snapshot</h3>
+      <div id="snapNew"><span class="no-snap">No snapshot saved yet</span></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="compareBtn" disabled>🔍 Compare snapshots</button>
+    <button class="btn btn-danger" id="clearBtn">🗑 Clear all data</button>
+  </div>
+
+  <div id="resultsArea"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- JSZip for reading ZIP files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const STORAGE_KEY = 'ig_unfollow_tracker';
+
+// ── Storage helpers ──────────────────────────────────────────────────────────
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  catch { return {}; }
+}
+
+function save(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// ── Parse Instagram export ───────────────────────────────────────────────────
+
+function extractUsernames(raw) {
+  // Handles both followers_1.json array format and {relationships_followers:[...]}
+  let arr = raw;
+  if (!Array.isArray(raw)) {
+    const key = Object.keys(raw).find(k => Array.isArray(raw[k]));
+    arr = key ? raw[key] : [];
+  }
+  return arr.map(entry => {
+    const sld = entry.string_list_data;
+    if (sld && sld.length) return { username: sld[0].value, href: sld[0].href, ts: sld[0].timestamp };
+    if (entry.value) return { username: entry.value, href: entry.href || '', ts: entry.timestamp || 0 };
+    return null;
+  }).filter(Boolean);
+}
+
+async function parseExport(file) {
+  const name = file.name.toLowerCase();
+
+  if (name.endsWith('.zip')) {
+    const zip = await JSZip.loadAsync(file);
+    // Look for followers_1.json or followers.json
+    const candidates = Object.keys(zip.files).filter(f =>
+      /followers[_\d]*\.json$/i.test(f) || f.endsWith('followers.json')
+    );
+    if (!candidates.length) throw new Error('Could not find followers JSON inside the ZIP. Make sure you selected the correct file.');
+    const text = await zip.files[candidates[0]].async('string');
+    return extractUsernames(JSON.parse(text));
+  }
+
+  if (name.endsWith('.json')) {
+    const text = await file.text();
+    return extractUsernames(JSON.parse(text));
+  }
+
+  throw new Error('Unsupported file type. Please drop a .zip or .json file.');
+}
+
+// ── UI helpers ───────────────────────────────────────────────────────────────
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function fmt(ts) {
+  if (!ts) return '';
+  return new Date(ts * 1000).toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+}
+
+function renderSnapInfo(el, snap) {
+  if (!snap) { el.innerHTML = '<span class="no-snap">No snapshot saved yet</span>'; return; }
+  el.innerHTML = `<div class="snap-info">
+    <strong>${snap.users.length} followers</strong>
+    <span>Saved on ${new Date(snap.savedAt).toLocaleString()}</span>
+  </div>`;
+}
+
+function initials(username) {
+  return (username || '?').slice(0, 2).toUpperCase();
+}
+
+function buildUserList(users, emptyMsg) {
+  if (!users.length) return `<div class="empty-state">${emptyMsg}</div>`;
+  return `
+    <input class="search-box" placeholder="Search..." oninput="filterList(this)" />
+    <div class="user-list">
+      ${users.map(u => `
+        <div class="user-item">
+          <div class="user-left">
+            <div class="avatar">${initials(u.username)}</div>
+            <div>
+              <div class="username">@${u.username}</div>
+              ${u.ts ? `<div class="user-since">Followed since ${fmt(u.ts)}</div>` : ''}
+            </div>
+          </div>
+          <a href="${u.href || 'https://instagram.com/' + u.username}" target="_blank" rel="noopener">View →</a>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function filterList(input) {
+  const q = input.value.toLowerCase();
+  const items = input.nextElementSibling.querySelectorAll('.user-item');
+  items.forEach(item => {
+    const name = item.querySelector('.username').textContent.toLowerCase();
+    item.style.display = name.includes(q) ? '' : 'none';
+  });
+}
+
+// ── Compare ──────────────────────────────────────────────────────────────────
+
+function compare(oldSnap, newSnap) {
+  const oldSet = new Map(oldSnap.users.map(u => [u.username, u]));
+  const newSet = new Map(newSnap.users.map(u => [u.username, u]));
+
+  const unfollowed = [...oldSet.values()].filter(u => !newSet.has(u.username));
+  const newFollowers = [...newSet.values()].filter(u => !oldSet.has(u.username));
+  const kept = [...newSet.values()].filter(u => oldSet.has(u.username));
+
+  return { unfollowed, newFollowers, kept };
+}
+
+function renderResults(result, oldSnap, newSnap) {
+  const { unfollowed, newFollowers, kept } = result;
+  const area = document.getElementById('resultsArea');
+
+  area.innerHTML = `
+    <div class="stats-bar">
+      <div class="stat-card"><div class="num red">${unfollowed.length}</div><div class="lbl">Unfollowed you</div></div>
+      <div class="stat-card"><div class="num green">${newFollowers.length}</div><div class="lbl">New followers</div></div>
+      <div class="stat-card"><div class="num blue">${kept.length}</div><div class="lbl">Still following</div></div>
+    </div>
+    <div class="results">
+      <div class="result-section">
+        <div class="result-header">
+          <h3>💔 Unfollowed you <span class="badge badge-red">${unfollowed.length}</span></h3>
+        </div>
+        ${buildUserList(unfollowed, 'Nobody unfollowed you between these two snapshots 🎉')}
+      </div>
+      <div class="result-section">
+        <div class="result-header">
+          <h3>✨ New followers <span class="badge badge-green">${newFollowers.length}</span></h3>
+        </div>
+        ${buildUserList(newFollowers, 'No new followers in this period.')}
+      </div>
+    </div>`;
+}
+
+// ── Main logic ───────────────────────────────────────────────────────────────
+
+function refreshUI() {
+  const data = load();
+  renderSnapInfo(document.getElementById('snapOld'), data.old || null);
+  renderSnapInfo(document.getElementById('snapNew'), data.current || null);
+  document.getElementById('compareBtn').disabled = !(data.old && data.current);
+}
+
+async function handleFile(file) {
+  toast('Parsing file…');
+  try {
+    const users = await parseExport(file);
+    const data = load();
+
+    // Rotate: current → old, new file → current
+    if (data.current) data.old = data.current;
+    data.current = { users, savedAt: Date.now() };
+    save(data);
+
+    toast(`Saved snapshot with ${users.length} followers.`);
+    refreshUI();
+    document.getElementById('resultsArea').innerHTML = '';
+
+    // Auto-compare if we already have two snapshots
+    if (data.old && data.current) {
+      renderResults(compare(data.old, data.current), data.old, data.current);
+    }
+  } catch (e) {
+    toast('Error: ' + e.message);
+  }
+}
+
+// Drop zone
+const dropArea = document.getElementById('dropArea');
+const fileInput = document.getElementById('fileInput');
+
+dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
+dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+dropArea.addEventListener('drop', e => {
+  e.preventDefault(); dropArea.classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f) handleFile(f);
+});
+fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); fileInput.value = ''; });
+
+document.getElementById('compareBtn').addEventListener('click', () => {
+  const data = load();
+  if (data.old && data.current) renderResults(compare(data.old, data.current), data.old, data.current);
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  if (!confirm('Clear all saved snapshots?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('resultsArea').innerHTML = '';
+  refreshUI();
+  toast('All data cleared.');
+});
+
+// Init
+refreshUI();
+</script>
+</body>
+</html>
