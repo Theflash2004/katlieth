@@ -1,0 +1,153 @@
+/* ===========================
+   ANIMATION LIBRARY — Kurzgesagt-inspired
+   Flat, geometric, purposeful motion
+   =========================== */
+
+/* ── Entrance ────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.6); }
+  70%  { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Continuous ──────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-16px) rotate(2deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.05); }
+  50%       { box-shadow: 0 0 60px rgba(255,255,255,0.15); }
+}
+
+@keyframes pulseWhite {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+/* ── Nerve signal path (like the video) ─────── */
+
+@keyframes signalTravel {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0); opacity: 0; }
+  40%            { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Text reveal ─────────────────────────────── */
+
+@keyframes typeIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Shapes ──────────────────────────────────── */
+
+@keyframes morphSquareCircle {
+  0%, 100% { border-radius: var(--radius-md); }
+  50%       { border-radius: 50%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes scanLine {
+  0%   { top: 0; opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Utility classes ─────────────────────────── */
+
+.animate-fade-up     { animation: fadeUp     var(--duration-slow) var(--ease-out) both; }
+.animate-fade-in     { animation: fadeIn     var(--duration-base) var(--ease-out) both; }
+.animate-slide-left  { animation: slideInLeft var(--duration-slow) var(--ease-out) both; }
+.animate-slide-right { animation: slideInRight var(--duration-slow) var(--ease-out) both; }
+.animate-scale-in    { animation: scaleIn    var(--duration-slow) var(--ease-spring) both; }
+.animate-pop         { animation: popIn      var(--duration-slow) var(--ease-spring) both; }
+.animate-float       { animation: float      3s var(--ease-in-out) infinite; }
+.animate-float-slow  { animation: floatSlow  5s var(--ease-in-out) infinite; }
+.animate-pulse-glow  { animation: pulseGlow  2.5s ease-in-out infinite; }
+.animate-spin-slow   { animation: spinSlow   8s linear infinite; }
+
+/* stagger helpers */
+.delay-100  { animation-delay: 100ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-900  { animation-delay: 900ms; }
+.delay-1100 { animation-delay: 1100ms; }
+
+/* intersection-observer driven reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

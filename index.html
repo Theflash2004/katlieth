@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Black & White · Kurzgesagt-inspired</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/design-tokens.css">
+  <link rel="stylesheet" href="animations/keyframes.css">
+  <link rel="stylesheet" href="components/components.css">
+  <style>
+    .token-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .token-row:last-child { border-bottom: none; }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .token-name {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-white);
+      flex: 1;
+    }
+
+    .token-value {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .anim-demo {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .spec-card {
+      padding: var(--space-5);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Design System</a>
+    <ul class="nav-links">
+      <li><a href="#tokens"     class="nav-link active">Tokens</a></li>
+      <li><a href="#type"       class="nav-link">Typography</a></li>
+      <li><a href="#components" class="nav-link">Components</a></li>
+      <li><a href="#animations" class="nav-link">Animations</a></li>
+    </ul>
+    <a href="pages/post.html" class="btn btn-primary btn-sm">View Post →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="min-height:60svh;">
+  <div style="position:relative;z-index:2;text-align:center;">
+    <p class="hero-eyebrow animate-fade-in">Black & White · Kurzgesagt-inspired · YouTube Channel</p>
+    <h1 class="hero-title animate-fade-up delay-100" style="max-width:20ch;">
+      A Design System Built for Science Storytelling
+    </h1>
+    <p class="hero-subtitle animate-fade-up delay-200">
+      Flat, geometric, animated. Every token, component, and motion pattern
+      you need to create compelling YouTube content design.
+    </p>
+    <div class="hero-actions animate-fade-up delay-300">
+      <a href="pages/post.html" class="btn btn-primary btn-lg">See It In Action</a>
+      <a href="#tokens" class="btn btn-outline btn-lg">Explore Tokens</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- Color tokens -->
+  <section class="section" id="tokens">
+    <div class="section-label" style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-8);">
+      <span class="label">Color Tokens</span>
+      <div style="flex:1;height:1px;background:var(--color-border);"></div>
+    </div>
+
+    <div class="grid-2" style="gap:var(--space-6);">
+      <div class="card">
+        <p class="heading-sm" style="margin-bottom:var(--space-6);">Grayscale</p>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#0a0a0a;"></div>
+          <span class="token-name">--color-black</span>
+          <span class="token-value">#0a0a0a</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#141414;"></div>
+          <span class="token-name">--color-black-soft</span>
+          <span class="token-value">#141414</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#1e1e1e;"></div>
+          <span class="token-name">--color-black-muted</span>
+          <span class="token-value">#1e1e1e</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#555;"></div>
+          <span class="token-name">--color-gray-mid</span>
+          <span class="token-value">#555555</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#aaa;"></div>
+          <span class="token-name">--color-gray-light</span>
+          <span class="token-value">#aaaaaa</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:#f5f5f5;"></div>
+          <span class="token-name">--color-white</span>
+          <span class="token-value">#f5f5f5</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="heading-sm" style="margin-bottom:var(--space-6);">Semantic</p>
+        <div class="token-row">
+          <div class="color-swatch" style="background:var(--color-bg);"></div>
+          <span class="token-name">--color-bg</span>
+          <span class="token-value">Background</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:var(--color-bg-card);"></div>
+          <span class="token-name">--color-bg-card</span>
+          <span class="token-value">Card surface</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:rgba(255,255,255,0.08);"></div>
+          <span class="token-name">--color-border</span>
+          <span class="token-value">rgba(255,255,255,0.08)</span>
+        </div>
+        <div class="token-row">
+          <div class="color-swatch" style="background:rgba(255,255,255,0.15);"></div>
+          <span class="token-name">--color-accent-dim</span>
+          <span class="token-value">rgba(255,255,255,0.15)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section" id="type">
+    <div class="section-label" style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-8);">
+      <span class="label">Typography Scale</span>
+      <div style="flex:1;height:1px;background:var(--color-border);"></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:var(--space-6);">
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Hero / Display Black</span>
+          <p style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;letter-spacing:-0.03em;line-height:1.1;">Do Animals Feel Pain?</p></div>
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Display XL</span>
+          <p class="display-xl">The Science Is Clear</p></div>
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Display LG</span>
+          <p class="display-lg">What Is Nociception?</p></div>
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Heading MD</span>
+          <p class="heading-md">Mammals and birds feel pain</p></div>
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Body LG</span>
+          <p class="body-lg text-muted">Pain does not need human words to matter. If an animal avoids injury, protects a wound, learns from harm—that is a signal we should take seriously.</p></div>
+        <div><span class="label" style="display:block;margin-bottom:var(--space-2);">Label / Caption</span>
+          <p class="label">Science · Animal Welfare · 4 min read</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section" id="components">
+    <div class="section-label" style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-8);">
+      <span class="label">Components</span>
+      <div style="flex:1;height:1px;background:var(--color-border);"></div>
+    </div>
+
+    <!-- Buttons -->
+    <p class="heading-sm" style="margin-bottom:var(--space-5);">Buttons</p>
+    <div class="card" style="margin-bottom:var(--space-6);">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center;">
+        <button class="btn btn-primary btn-lg">Primary Large</button>
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-primary btn-sm">Primary Small</button>
+        <button class="btn btn-outline btn-lg">Outline Large</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-ghost">Ghost</button>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <p class="heading-sm" style="margin-bottom:var(--space-5);">Cards</p>
+    <div class="grid-3" style="margin-bottom:var(--space-6);">
+      <div class="card">
+        <span class="badge badge-outline" style="margin-bottom:var(--space-4);">Mammals</span>
+        <p class="heading-sm" style="margin-bottom:var(--space-2);">Strong Evidence</p>
+        <p class="body-sm text-muted">Dogs, cats, horses, and cows have nervous systems very similar to ours.</p>
+      </div>
+      <div class="card card-elevated">
+        <span class="badge badge-filled" style="margin-bottom:var(--space-4);">Fish</span>
+        <p class="heading-sm" style="margin-bottom:var(--space-2);">Debated</p>
+        <p class="body-sm text-muted">Pain-detecting systems found, but consciousness is still actively debated.</p>
+      </div>
+      <div class="card card-glass">
+        <span class="badge badge-outline" style="margin-bottom:var(--space-4);">Invertebrates</span>
+        <p class="heading-sm" style="margin-bottom:var(--space-2);">Emerging</p>
+        <p class="body-sm text-muted">Octopuses and crabs now legally recognized as sentient in the UK.</p>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <p class="heading-sm" style="margin-bottom:var(--space-5);">Badges</p>
+    <div class="card" style="margin-bottom:var(--space-6);">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;">
+        <span class="badge badge-outline">Outline</span>
+        <span class="badge badge-filled">Filled</span>
+        <span class="badge badge-outline">Science</span>
+        <span class="badge badge-outline">4 Minutes</span>
+        <span class="badge badge-filled">New</span>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <p class="heading-sm" style="margin-bottom:var(--space-5);">Progress</p>
+    <div class="card" style="margin-bottom:var(--space-6);">
+      <p class="label" style="margin-bottom:var(--space-3);">Mammals</p>
+      <div class="progress-track"><div class="progress-fill" style="width:95%"></div></div>
+      <p class="label" style="margin-block:var(--space-3);">Fish</p>
+      <div class="progress-track"><div class="progress-fill" style="width:55%"></div></div>
+      <p class="label" style="margin-block:var(--space-3);">Insects</p>
+      <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
+    </div>
+
+    <!-- Stats -->
+    <p class="heading-sm" style="margin-bottom:var(--space-5);">Stat Blocks</p>
+    <div class="grid-4" style="margin-bottom:var(--space-6);">
+      <div class="card stat-block">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Animal species covered</span>
+      </div>
+      <div class="card stat-block">
+        <span class="stat-number">4<span style="font-size:0.5em;">min</span></span>
+        <span class="stat-label">Video runtime</span>
+      </div>
+      <div class="card stat-block">
+        <span class="stat-number">UK</span>
+        <span class="stat-label">First to legally protect crustaceans</span>
+      </div>
+      <div class="card stat-block">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Questions worth asking</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animations -->
+  <section class="section" id="animations">
+    <div class="section-label" style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-8);">
+      <span class="label">Motion & Animations</span>
+      <div style="flex:1;height:1px;background:var(--color-border);"></div>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div class="anim-demo animate-float"></div>
+        <span class="label">Float</span>
+      </div>
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div class="anim-demo animate-pulse-glow"></div>
+        <span class="label">Pulse Glow</span>
+      </div>
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div class="anim-demo animate-spin-slow" style="border-radius:var(--radius-sm);border:2px solid rgba(255,255,255,0.3);background:transparent;"></div>
+        <span class="label">Spin Slow</span>
+      </div>
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div class="anim-demo" style="animation:morphSquareCircle 2s ease-in-out infinite;"></div>
+        <span class="label">Morph Shape</span>
+      </div>
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div class="anim-demo" style="background:linear-gradient(90deg,#222 0%,#fff 50%,#222 100%);background-size:200% auto;animation:shimmer 2s linear infinite;"></div>
+        <span class="label">Shimmer</span>
+      </div>
+      <div class="spec-card" style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+        <div style="display:flex;gap:4px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:white;animation:dotPulse 1.4s ease-in-out infinite;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:white;animation:dotPulse 1.4s ease-in-out infinite 0.2s;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:white;animation:dotPulse 1.4s ease-in-out infinite 0.4s;"></div>
+        </div>
+        <span class="label">Dot Pulse</span>
+      </div>
+    </div>
+
+    <!-- Easing reference -->
+    <div class="card" style="margin-top:var(--space-8);">
+      <p class="heading-sm" style="margin-bottom:var(--space-6);">Easing Curves</p>
+      <div class="spec-grid">
+        <div>
+          <p class="label" style="margin-bottom:var(--space-2);">Ease Out</p>
+          <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);">cubic-bezier(0.22, 1, 0.36, 1)</p>
+          <p class="body-sm text-muted" style="margin-top:var(--space-1);">Default entrance — fast start, gentle landing</p>
+        </div>
+        <div>
+          <p class="label" style="margin-bottom:var(--space-2);">Ease Spring</p>
+          <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);">cubic-bezier(0.34, 1.56, 0.64, 1)</p>
+          <p class="body-sm text-muted" style="margin-top:var(--space-1);">Playful overshoot — icons, popups, badges</p>
+        </div>
+        <div>
+          <p class="label" style="margin-bottom:var(--space-2);">Ease Snap</p>
+          <p style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);">cubic-bezier(0.16, 1, 0.3, 1)</p>
+          <p class="body-sm text-muted" style="margin-top:var(--space-1);">Kurzgesagt-style — sharp, confident, purposeful</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer style="padding:var(--space-12) var(--gutter) var(--space-16);max-width:var(--container-xl);margin-inline:auto;">
+  <hr class="divider">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-4);">
+    <span class="nav-logo">Design System</span>
+    <p class="body-sm" style="color:var(--color-text-muted);">Black & White · Kurzgesagt-inspired · YouTube Channel</p>
+    <a href="pages/post.html" class="btn btn-outline btn-sm">View Live Post →</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

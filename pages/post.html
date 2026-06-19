@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do Animals Feel Pain Like Humans Do? — Channel</title>
+  <meta name="description" content="Do animals feel pain the same way humans do, or are they just reacting by instinct? Science explains.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/design-tokens.css">
+  <link rel="stylesheet" href="../animations/keyframes.css">
+  <link rel="stylesheet" href="../components/components.css">
+  <style>
+    /* ── Page-specific styles ─── */
+
+    /* Nerve animation SVG */
+    .nerve-path {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: signalTravel 2.4s var(--ease-out) infinite;
+    }
+
+    .nerve-dot {
+      animation: dotPulse 2.4s var(--ease-out) infinite;
+    }
+    .nerve-dot:nth-child(2) { animation-delay: 0.4s; }
+    .nerve-dot:nth-child(3) { animation-delay: 0.8s; }
+
+    /* Floating geometric shapes */
+    .shape-hex {
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    }
+
+    /* YouTube thumbnail mockup */
+    .thumbnail {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--color-black-soft);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+    }
+
+    .thumbnail-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+
+    .thumbnail-shapes {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .thumbnail-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8%;
+    }
+
+    .thumbnail-label {
+      font-family: var(--font-display);
+      font-size: clamp(0.6rem, 2vw, 1rem);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-gray-light);
+      margin-bottom: 4%;
+    }
+
+    .thumbnail-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4.5vw, 3rem);
+      font-weight: var(--weight-black);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1.05;
+      color: var(--color-white);
+      max-width: 70%;
+    }
+
+    .thumbnail-play {
+      position: absolute;
+      bottom: 6%;
+      right: 6%;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-black);
+      transition: transform var(--duration-base) var(--ease-spring);
+    }
+
+    .thumbnail:hover .thumbnail-play {
+      transform: scale(1.12);
+    }
+
+    .thumbnail-duration {
+      position: absolute;
+      bottom: 6%;
+      left: 6%;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-gray-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* Nerve signal animation panel */
+    .nerve-diagram {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    /* Animal icons grid */
+    .animal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 600px) {
+      .animal-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .animal-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-5);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      cursor: default;
+      transition:
+        border-color var(--duration-base) var(--ease-out),
+        transform var(--duration-base) var(--ease-spring);
+    }
+
+    .animal-card:hover {
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-4px);
+    }
+
+    .animal-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--color-white);
+    }
+
+    .animal-name {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-white);
+    }
+
+    .animal-pain-level {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      text-align: center;
+    }
+
+    /* pain confidence dots */
+    .confidence-dots {
+      display: flex;
+      gap: 3px;
+      margin-top: var(--space-1);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-gray-dark);
+    }
+
+    .dot.filled { background: var(--color-white); }
+
+    /* Chapter nav */
+    .chapter-nav {
+      position: sticky;
+      top: 73px;
+      z-index: 50;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding-block: var(--space-3);
+    }
+
+    .chapter-nav-inner {
+      max-width: var(--container-xl);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      display: flex;
+      gap: var(--space-6);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .chapter-nav-inner::-webkit-scrollbar { display: none; }
+
+    .chapter-link {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color var(--duration-fast);
+      padding-bottom: var(--space-1);
+      border-bottom: 1px solid transparent;
+    }
+
+    .chapter-link:hover,
+    .chapter-link.active {
+      color: var(--color-white);
+      border-bottom-color: var(--color-white);
+    }
+
+    /* Section decorative lines */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* Closing quote */
+    .closing-quote {
+      position: relative;
+      padding: var(--space-12) var(--space-8);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .closing-quote::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12rem;
+      font-family: var(--font-display);
+      font-weight: var(--weight-black);
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .closing-quote-text {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-snug);
+      color: var(--color-white);
+      max-width: 44ch;
+      margin-inline: auto;
+    }
+
+    /* Geometric hero shapes */
+    .hero-geo {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .geo-circle-1 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spinSlow 30s linear infinite;
+    }
+
+    .geo-circle-2 {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border: 1px solid rgba(255,255,255,0.025);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spinSlow 50s linear infinite reverse;
+    }
+
+    .geo-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── SVG Icon Sprite ─── -->
+<div aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-nerve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12h3l3-8 4 16 3-8h7"/>
+    </symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+    </symbol>
+  </svg>
+</div>
+
+<!-- ─── Navigation ─── -->
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Channel</a>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active">Posts</a></li>
+      <li><a href="#" class="nav-link">Videos</a></li>
+      <li><a href="#" class="nav-link">About</a></li>
+    </ul>
+    <a href="#" class="btn btn-primary btn-sm">Subscribe</a>
+  </div>
+</nav>
+
+<!-- ─── Chapter Nav ─── -->
+<nav class="chapter-nav" aria-label="Script chapters">
+  <div class="chapter-nav-inner">
+    <a href="#hook"      class="chapter-link active">Hook</a>
+    <a href="#what-pain" class="chapter-link">What Is Pain?</a>
+    <a href="#mammals"   class="chapter-link">Mammals & Birds</a>
+    <a href="#vs-human"  class="chapter-link">vs Human Pain</a>
+    <a href="#fish"      class="chapter-link">Fish</a>
+    <a href="#others"    class="chapter-link">Octopus & Crabs</a>
+    <a href="#closing"   class="chapter-link">Closing</a>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero" id="top">
+  <!-- Background geometry -->
+  <div class="hero-geo" aria-hidden="true">
+    <div class="geo-circle-1"></div>
+    <div class="geo-circle-2"></div>
+    <div class="geo-dot" style="top:20%;left:15%;animation:float 4s ease-in-out infinite;"></div>
+    <div class="geo-dot" style="top:70%;left:80%;animation:float 5s ease-in-out infinite 1s;"></div>
+    <div class="geo-dot" style="top:45%;left:88%;animation:float 3.5s ease-in-out infinite 0.5s;"></div>
+    <div class="geo-dot" style="top:80%;left:12%;animation:float 6s ease-in-out infinite 2s;"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:var(--container-xl);margin-inline:auto;">
+    <!-- Eyebrow -->
+    <p class="hero-eyebrow animate-fade-in">Science & Animal Welfare · 4-min video</p>
+
+    <!-- Title -->
+    <h1 class="hero-title animate-fade-up delay-100">
+      Do Animals Feel Pain Like Humans Do?
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle animate-fade-up delay-200">
+      The science is more surprising than you think. We explore what pain
+      really is—and what it means for every animal on earth.
+    </p>
+
+    <!-- Actions -->
+    <div class="hero-actions animate-fade-up delay-300">
+      <a href="#hook" class="btn btn-primary btn-lg">
+        <svg width="16" height="16"><use href="#icon-play"/></svg>
+        Read Script
+      </a>
+      <a href="#what-pain" class="btn btn-outline btn-lg">
+        Jump to Science
+        <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+      </a>
+    </div>
+
+    <!-- Meta badges -->
+    <div style="display:flex;gap:var(--space-3);justify-content:center;margin-top:var(--space-8);" class="animate-fade-up delay-400">
+      <span class="badge badge-outline">4 Minutes</span>
+      <span class="badge badge-outline">Science</span>
+      <span class="badge badge-outline">Animal Welfare</span>
+      <span class="badge badge-outline">Kurzgesagt-Style</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Thumbnail Mockup ─── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">
+      <span class="label">YouTube Thumbnail</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="thumbnail reveal">
+      <div class="thumbnail-bg"></div>
+      <!-- decorative shapes inside thumbnail -->
+      <div class="thumbnail-shapes" aria-hidden="true">
+        <div style="position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,0.05);top:-80px;right:-60px;animation:spinSlow 20s linear infinite;"></div>
+        <div style="position:absolute;width:160px;height:160px;border:1px solid rgba(255,255,255,0.06);top:40%;left:62%;transform:rotate(22deg);animation:spinSlow 15s linear infinite reverse;"></div>
+        <!-- nerve waveform -->
+        <svg style="position:absolute;bottom:20%;left:5%;width:35%;opacity:0.15;" viewBox="0 0 200 50" fill="none">
+          <path d="M0 25h30l10-20 15 40 10-20 15 20 15-40 10 40 10-20H200" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <!-- floating elements -->
+        <div style="position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.15);top:15%;right:28%;animation:float 3s ease-in-out infinite;"></div>
+        <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.1);top:60%;left:58%;animation:float 4s ease-in-out infinite 1s;"></div>
+      </div>
+
+      <div class="thumbnail-text">
+        <p class="thumbnail-label">Science</p>
+        <h2 class="thumbnail-title">Do They Hurt Like Us?</h2>
+      </div>
+
+      <div class="thumbnail-play" aria-label="Play">
+        <svg width="20" height="20"><use href="#icon-play"/></svg>
+      </div>
+      <span class="thumbnail-duration">4:10</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Animal pain confidence grid ─── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-label">
+      <span class="label">Animals Covered</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="animal-grid">
+      <!-- Dogs -->
+      <div class="animal-card reveal">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 36c0-8 4-14 10-16M40 36c0-8-4-14-10-16M18 20c0-4 2-8 6-8s6 4 6 8"/>
+          <path d="M14 14 8 8M34 14l6-6M24 20v6M20 32c0 2 1.5 4 4 4s4-2 4-4"/>
+          <circle cx="24" cy="18" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="animal-name">Dog</span>
+        <span class="animal-pain-level">Strong evidence</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        </div>
+      </div>
+
+      <!-- Cow -->
+      <div class="animal-card reveal delay-100">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 34v-8c0-6 4-10 14-10s14 4 14 10v8M10 34h28"/>
+          <path d="M16 34v4M32 34v4M12 16 8 10M36 16l4-10"/>
+          <circle cx="19" cy="22" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="29" cy="22" r="1.5" fill="currentColor" stroke="none"/>
+          <path d="M22 28h4M21 25c0 2 1 3 3 3s3-1 3-3"/>
+        </svg>
+        <span class="animal-name">Cow</span>
+        <span class="animal-pain-level">Strong evidence</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        </div>
+      </div>
+
+      <!-- Bird -->
+      <div class="animal-card reveal delay-200">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 14c-6 0-12 4-14 10 2 0 4-1 6-2-2 3-3 7-3 10h22c0-3-1-7-3-10 2 1 4 2 6 2-2-6-8-10-14-10Z"/>
+          <path d="M20 32 18 38M28 32l2 6"/>
+          <circle cx="21" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+          <path d="M24 22c1 0 3 1 3 2"/>
+        </svg>
+        <span class="animal-name">Bird</span>
+        <span class="animal-pain-level">Good evidence</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- Fish -->
+      <div class="animal-card reveal delay-300">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M36 24c0-6-4-10-12-10S10 18 10 24s4 10 14 10c8 0 12-4 12-10Z"/>
+          <path d="M38 16l4-4-4 8 4 4-4-4"/>
+          <circle cx="18" cy="22" r="2" fill="currentColor" stroke="none"/>
+          <path d="M22 24c0 2 2 4 4 4"/>
+        </svg>
+        <span class="animal-name">Fish</span>
+        <span class="animal-pain-level">Debated</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- Octopus -->
+      <div class="animal-card reveal">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="18" r="8"/>
+          <path d="M16 24c-2 4-4 8-2 12M20 26c-1 4-1 8 0 10M24 26v10M28 26c1 4 1 8 0 10M32 24c2 4 4 8 2 12"/>
+          <circle cx="21" cy="16" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="27" cy="16" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="animal-name">Octopus</span>
+        <span class="animal-pain-level">Legally sentient (UK)</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- Crab -->
+      <div class="animal-card reveal delay-100">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="16" y="20" width="16" height="10" rx="4"/>
+          <path d="M16 22 8 16M32 22l8-6M16 26 6 28M32 26l10 2M20 30l-2 6M28 30l2 6"/>
+          <circle cx="20" cy="24" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="28" cy="24" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="animal-name">Crab</span>
+        <span class="animal-pain-level">Legally sentient (UK)</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- Insect -->
+      <div class="animal-card reveal delay-200">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="24" cy="24" rx="5" ry="8"/>
+          <ellipse cx="24" cy="16" rx="3" ry="3"/>
+          <path d="M19 18 10 12M29 18l9-6M19 24 8 22M29 24l11-2M19 28l-6 8M29 28l6 8"/>
+          <path d="M22 13l-2-3M26 13l2-3"/>
+        </svg>
+        <span class="animal-name">Insect</span>
+        <span class="animal-pain-level">Uncertain</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- Human -->
+      <div class="animal-card reveal delay-300" style="border-color:rgba(255,255,255,0.15);">
+        <svg class="animal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="12" r="5"/>
+          <path d="M18 22v12M30 22v12M18 28h12M16 22c0-2 3-4 8-4s8 2 8 4"/>
+          <path d="M18 34l-3 6M30 34l3 6"/>
+        </svg>
+        <span class="animal-name">Human</span>
+        <span class="animal-pain-level">Benchmark</span>
+        <div class="confidence-dots">
+          <div class="dot filled"></div><div class="dot filled"></div>
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── Script Section ─── -->
+<section class="section" id="hook">
+  <div class="container" style="max-width:var(--container-md);">
+
+    <!-- Nerve Diagram -->
+    <div class="nerve-diagram reveal" style="margin-bottom:var(--space-12);">
+      <p class="label" style="margin-bottom:var(--space-4);">Animation concept — nerve signal</p>
+      <svg viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- Spine path -->
+        <path d="M40 70 H440" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+        <!-- Signal path -->
+        <path class="nerve-path" d="M40 70 H100 L115 30 L135 110 L155 50 L175 90 L195 70 H440"
+              stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="600" stroke-dashoffset="600"/>
+        <!-- Dots (neurons) -->
+        <circle class="nerve-dot" cx="100" cy="70" r="5" fill="white"/>
+        <circle class="nerve-dot" cx="200" cy="70" r="5" fill="white"/>
+        <circle class="nerve-dot" cx="300" cy="70" r="5" fill="white"/>
+        <circle class="nerve-dot" cx="400" cy="70" r="5" fill="white"/>
+        <!-- Labels -->
+        <text x="40" y="100" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">FOOT</text>
+        <text x="205" y="100" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">SPINE</text>
+        <text x="390" y="100" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">BRAIN</text>
+        <!-- Scanline -->
+        <rect x="0" y="0" width="480" height="140" fill="url(#scanGrad)" opacity="0.15"/>
+        <defs>
+          <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="white" stop-opacity="0"/>
+            <stop offset="50%" stop-color="white" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <p class="body-sm" style="color:var(--color-text-muted);margin-top:var(--space-4);">
+        Nociception signal traveling from injury site through spinal cord to brain. Pain is the brain's <em>interpretation</em> of this signal.
+      </p>
+    </div>
+
+    <!-- Script blocks -->
+    <div class="script-block reveal" id="hook">
+      <span class="script-timestamp">0:00 – 0:20 · Opening Hook</span>
+      <p class="script-content">
+        Imagine stepping on a sharp stone. Before you even think, your foot pulls away.
+        Then comes the feeling: pain. You might limp, protect the injury, remember what happened,
+        and avoid stepping there again.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        Now imagine a dog limping, a fish struggling on a hook, or an octopus curling away from danger.
+        Are they feeling pain like we do? Or are they just reacting like machines?
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);font-weight:var(--weight-semibold);">
+        The answer is: animals do feel pain, but not always in the exact same way humans do.
+      </p>
+      <div class="animation-note">
+        Human foot steps on sharp rock, then quick cuts to dog paw, fish, bird, octopus.
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="what-pain">
+      <span class="script-timestamp">0:20 – 1:05 · What Pain Actually Is</span>
+      <p class="script-content">
+        To understand this, we need to separate two things: <strong>nociception</strong> and <strong>pain</strong>.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        Nociception is the body's alarm system. It detects damage—heat, pressure, cuts, chemicals—and
+        sends warning signals through the nerves. Pain is deeper. Pain is the unpleasant experience
+        that tells the brain, "This matters. Protect yourself."
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        Many animals have the biological equipment for this: nerves that detect injury, spinal pathways
+        that send signals, and brains that process danger.
+      </p>
+      <div class="animation-note">
+        Simple glowing nerve signal traveling from paw to spine to brain.
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="mammals">
+      <span class="script-timestamp">1:05 – 1:55 · Mammals and Birds</span>
+      <p class="script-content">
+        For mammals—dogs, cats, horses, cows, elephants, mice—the evidence is very strong.
+        Their nervous systems are close enough to ours that scientists and veterinarians generally
+        agree they can feel pain.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        A dog with an injured paw may avoid walking on it. A cow may stand differently to reduce
+        pressure. A rabbit may become quiet and hide because, in the wild, showing weakness can
+        attract predators.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);font-weight:var(--weight-semibold);">
+        So with mammals and birds, the question isn't "Do they feel pain?" The better question is:
+        how well are we noticing it?
+      </p>
+      <div class="animation-note">
+        Split screen of dog, cow, rabbit, and bird showing subtle pain behaviors.
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="vs-human">
+      <span class="script-timestamp">1:55 – 2:35 · Is It Exactly Like Human Pain?</span>
+      <p class="script-content">
+        But do animals feel pain <em>exactly</em> like humans? Probably not. A human can think,
+        "Will this injury ruin my future? What if it never heals?" That language-based worry may
+        be uniquely human.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        But that doesn't mean animal pain is simple or meaningless. Animals can learn from painful
+        events. They can avoid places where they were hurt. Some show stress, fear, and long-term
+        behavior changes after injury.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);font-weight:var(--weight-semibold);">
+        Animal pain may not be identical to human pain, but it can still be real, unpleasant, and important.
+      </p>
+      <div class="animation-note">
+        Human thought bubble with words; animal thought bubble with images, fear symbols, memory flashes.
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="fish">
+      <span class="script-timestamp">2:35 – 3:15 · Fish and Less Obvious Animals</span>
+      <p class="script-content">
+        Fish are where the debate gets more complicated. Fish don't have faces like ours, and they
+        don't scream, so people often assume they don't suffer.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        But research has found pain-detecting systems and pain-like behaviors in fish. Some reviews
+        argue there is no good evidence that fish lack sentience, while others continue to debate
+        how conscious fish pain really is.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);font-weight:var(--weight-semibold);">
+        That uncertainty matters. If an animal might be capable of suffering, the safer and more
+        ethical approach is to reduce unnecessary harm.
+      </p>
+      <div class="animation-note">
+        Fish with highlighted nervous system, then question marks turning into a "handle with care" sign.
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="others">
+      <span class="script-timestamp">3:15 – 3:45 · Octopuses, Crabs, and Surprising Cases</span>
+      <p class="script-content">
+        Even some invertebrates are now being taken more seriously. Octopuses are famous for
+        problem-solving, escaping tanks, using tools, and reacting strongly to threats.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        In the UK, vertebrates, cephalopods like octopuses, and decapod crustaceans like crabs
+        and lobsters are legally recognized as sentient under the Animal Welfare Sentience Act.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        This doesn't mean a crab feels pain exactly like a human. It means the evidence is serious
+        enough that we shouldn't dismiss their suffering.
+      </p>
+      <div class="animation-note">
+        Octopus solving a maze, crab avoiding danger, legal document stamped "sentient."
+      </div>
+    </div>
+
+    <div class="script-block reveal" id="closing">
+      <span class="script-timestamp">3:45 – 4:10 · Final Message</span>
+      <p class="script-content">
+        So, do animals feel pain like humans do? Some animals probably feel pain in ways very
+        similar to us. Others may experience pain differently because their brains and bodies
+        are different. But different doesn't mean fake.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);font-weight:var(--weight-semibold);">
+        Pain doesn't need human words to matter.
+      </p>
+      <p class="script-content" style="margin-top:var(--space-4);">
+        If an animal avoids injury, protects a wound, learns from harm, or changes its behavior
+        after being hurt, that is a signal we should take seriously. The more science learns,
+        the clearer the message becomes: animals are not objects. They are living beings with
+        experiences—and our responsibility is to treat them with care.
+      </p>
+      <div class="animation-note">
+        Human hand gently helping injured animal; montage of dog, bird, fish, octopus, cow.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Closing Quote ─── -->
+<section class="section">
+  <div class="container">
+    <div class="closing-quote reveal">
+      <p class="closing-quote-text">
+        "So next time we ask, 'Do animals feel pain like us?'—maybe the better question is:
+        if they can suffer, how should we treat them?"
+      </p>
+      <p style="margin-top:var(--space-6);color:var(--color-text-muted);font-size:var(--text-sm);">
+        — Closing line
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── Footer ─── -->
+<footer style="padding:var(--space-12) var(--gutter) var(--space-16);max-width:var(--container-xl);margin-inline:auto;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-4);">
+    <span class="nav-logo">Channel</span>
+    <div style="display:flex;gap:var(--space-6);align-items:center;">
+      <a href="https://iasp-pain.org" target="_blank" rel="noopener" class="nav-link" style="font-size:var(--text-xs);">
+        IASP Pain
+        <svg width="10" height="10" style="display:inline;margin-left:3px;"><use href="#icon-external"/></svg>
+      </a>
+      <a href="https://ncbi.nlm.nih.gov" target="_blank" rel="noopener" class="nav-link" style="font-size:var(--text-xs);">
+        NIH Research
+        <svg width="10" height="10" style="display:inline;margin-left:3px;"><use href="#icon-external"/></svg>
+      </a>
+      <a href="https://www.gov.uk" target="_blank" rel="noopener" class="nav-link" style="font-size:var(--text-xs);">
+        UK Animal Welfare Act
+        <svg width="10" height="10" style="display:inline;margin-left:3px;"><use href="#icon-external"/></svg>
+      </a>
+    </div>
+    <p class="body-sm" style="color:var(--color-text-muted);">Design system · Black & White · Kurzgesagt-inspired</p>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Active chapter link tracking
+  const chapterLinks = document.querySelectorAll('.chapter-link');
+  const sections = ['hook', 'what-pain', 'mammals', 'vs-human', 'fish', 'others', 'closing'];
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          chapterLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector(`.chapter-link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0.5, rootMargin: '-60px 0px -40% 0px' }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+</script>
+</body>
+</html>
