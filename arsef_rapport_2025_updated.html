@@ -780,6 +780,15 @@ html,body{
     #page3 .mini-stat .v{ font-family:var(--font-display); font-weight:900; font-size:13pt; line-height:1;}
     #page3 .mini-stat .l{ font-family:var(--font-body); font-weight:600; font-size:7pt; opacity:0.9; line-height:1.2; margin-top:0.8mm;}
     #page3 .focus-grid{ flex:1.1; display:grid; grid-template-columns:1fr 1fr; gap:2mm; min-width:0; }
+
+    /* Financeurs mini chart */
+    #page3 .fin-card{ background:rgba(255,255,255,0.13); border-radius:10px; padding:2mm 2.5mm; margin-top:1.8mm; }
+    #page3 .fin-label{ font-family:var(--font-body); font-weight:800; font-size:7pt; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.8); margin-bottom:1.8mm; }
+    #page3 .fin-bar{ height:5.5mm; border-radius:5px; overflow:hidden; display:flex; margin-bottom:1.8mm; }
+    #page3 .fin-seg{ height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:7pt; color:rgba(50,10,70,0.85); overflow:hidden; white-space:nowrap; }
+    #page3 .fin-legend{ display:flex; flex-wrap:wrap; gap:0.8mm 4mm; }
+    #page3 .fin-item{ display:flex; align-items:center; gap:2px; font-family:var(--font-body); font-weight:600; font-size:7.2pt; color:rgba(255,255,255,0.95); }
+    #page3 .fin-dot{ width:7px; height:7px; border-radius:2px; flex-shrink:0; margin-right:2px; }
     #page3 .focus-card{ background:rgba(255,255,255,0.14); border-radius:10px; padding:2.2mm 2.5mm; display:flex; flex-direction:column; justify-content:center; }
     #page3 .focus-card .focus-label{ font-family:var(--font-body); font-weight:800; font-size:7.5pt; text-transform:uppercase; letter-spacing:0.04em; opacity:0.86; }
     #page3 .focus-card .focus-text{ font-family:var(--font-body); font-weight:600; font-size:8pt; line-height:1.22; margin-top:1mm; }
@@ -822,7 +831,23 @@ html,body{
             </div>
           </div>
           <p>Profil : majoritairement <strong>GIR 4</strong>, personnes âgées de <strong>81 à 100 ans</strong>.</p>
-          <p style="font-size:8.4pt; opacity:0.9; margin-top:0.8mm;"><strong>Financeurs :</strong> APA (Conseil Départemental 42) · Caisses de retraite (CARSAT) · Aide sociale · Participation des bénéficiaires</p>
+          <div class="fin-card">
+            <div class="fin-label">Répartition des 34 820 h par financeur</div>
+            <div class="fin-bar">
+              <div class="fin-seg" style="width:69.2%; background:rgba(255,255,255,0.80);">APA 69 %</div>
+              <div class="fin-seg" style="width:11.8%; background:rgba(255,175,45,0.92);">12 %</div>
+              <div class="fin-seg" style="width:7.7%;  background:rgba(255,130,55,0.92);">8 %</div>
+              <div class="fin-seg" style="width:6.7%;  background:rgba(240,90,150,0.92);">7 %</div>
+              <div class="fin-seg" style="width:4.6%;  background:rgba(190,215,255,0.75);">5 %</div>
+            </div>
+            <div class="fin-legend">
+              <div class="fin-item"><span class="fin-dot" style="background:rgba(255,255,255,0.80);"></span>APA · 24 082 h · 69 %</div>
+              <div class="fin-item"><span class="fin-dot" style="background:rgba(255,175,45,0.92);"></span>Sans PEC · 4 112 h · 12 %</div>
+              <div class="fin-item"><span class="fin-dot" style="background:rgba(255,130,55,0.92);"></span>CARSAT · 2 674 h · 8 %</div>
+              <div class="fin-item"><span class="fin-dot" style="background:rgba(240,90,150,0.92);"></span>PCH · 2 336 h · 7 %</div>
+              <div class="fin-item"><span class="fin-dot" style="background:rgba(190,215,255,0.75);"></span>Autres · 1 617 h · 5 %</div>
+            </div>
+          </div>
         </div>
         <div class="panel-right">
           <div class="mini-stat"><div class="v">326</div><div class="l">Prestataires · 97,9 %</div></div>
@@ -841,7 +866,7 @@ html,body{
         </div>
         <div class="panel-mid">
           <p>L'ESA a réalisé <strong>93 accompagnements</strong> en 2025 — activité marquée par un <strong>arrêt maladie de l'ergothérapeute de 3 mois</strong> (mars–juin), entraînant un fonctionnement en mode dégradé sur cette période.</p>
-          <p style="font-size:8.4pt; opacity:0.9;"><strong>Prescripteurs :</strong> neurologues &amp; gériatres — principalement Saint-Étienne (63 % de la patientèle)</p>
+          <p>Les interventions visent le <strong>maintien de l'autonomie</strong>, la stimulation cognitive et le <strong>soutien des aidants</strong>.</p>
         </div>
         <div class="focus-grid">
           <div class="focus-card"><div class="focus-label">Âge moyen</div><div class="focus-text">81 ans · majorité féminine · troubles neurodégénératifs.</div></div>
