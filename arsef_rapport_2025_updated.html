@@ -526,12 +526,12 @@ html,body{
     #page2 .top3-row{
       display:flex;
       gap:4mm;
-      margin-top:3mm;
+      margin-top:2.5mm;
     }
     #page2 .top3-card{
       flex:1;
       border-radius:16px;
-      padding:3.5mm 4.2mm;
+      padding:2.5mm 4mm 2.8mm;
       position:relative;
       background:#fff;
       border:2px solid var(--lavender);
@@ -539,29 +539,29 @@ html,body{
     #page2 .top3-card .rank{
       font-family:var(--font-display);
       font-weight:900;
-      font-size:11pt;
+      font-size:10pt;
       color:#fff;
       background:var(--purple);
-      border-radius:8px;
-      width:26px; height:26px;
+      border-radius:7px;
+      width:22px; height:22px;
       display:flex; align-items:center; justify-content:center;
-      position:absolute; top:-10px; left:-10px;
+      position:absolute; top:-8px; left:-8px;
       box-shadow:0 3px 8px rgba(0,0,0,0.18);
     }
     #page2 .top3-card.r1 .rank{ background:var(--magenta); }
     #page2 .top3-card.r3 .rank{ background:var(--orange); }
-    #page2 .top3-card .commune{ font-family:var(--font-display); font-weight:800; font-size:12pt; color:var(--plum); margin-top:1mm;}
-    #page2 .top3-card .num{ font-family:var(--font-display); font-weight:900; font-size:22pt; color:var(--ink); line-height:1; margin-top:0.8mm;}
-    #page2 .top3-card .pct{ font-family:var(--font-body); font-weight:700; font-size:9pt; color:var(--ink-soft);}
+    #page2 .top3-card .commune{ font-family:var(--font-display); font-weight:800; font-size:11pt; color:var(--plum); margin-top:0.5mm;}
+    #page2 .top3-card .num{ font-family:var(--font-display); font-weight:900; font-size:18pt; color:var(--ink); line-height:1; margin-top:0.5mm;}
+    #page2 .top3-card .pct{ font-family:var(--font-body); font-weight:700; font-size:8.5pt; color:var(--ink-soft);}
 
-    #page2 .ranking-zone{ margin-top:3mm; flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-    #page2 .ranking-card{ background:#fff; border:2px solid var(--lavender); border-radius:16px; padding:3mm 4mm; display:flex; flex-direction:column; min-height:0; overflow:hidden; }
-    #page2 .ranking-title{ display:flex; align-items:center; justify-content:space-between; margin-bottom:2mm; }
+    #page2 .ranking-zone{ margin-top:2.5mm; flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+    #page2 .ranking-card{ background:#fff; border:2px solid var(--lavender); border-radius:16px; padding:3.5mm 4mm 4mm; display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+    #page2 .ranking-title{ display:flex; align-items:center; justify-content:space-between; margin-bottom:2.5mm; }
     #page2 .legend-row2{ display:flex; gap:12px; }
     #page2 .legend-row2 .li{ display:flex; align-items:center; gap:5px; font-size:8.7pt; font-weight:700; color:var(--ink-soft);}
     #page2 .legend-row2 .dot{ width:9px;height:9px;border-radius:3px;}
-    #page2 .bars-wrap{ flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:2mm 0;}
-    #page2 .bar-row{ display:grid; grid-template-columns: 7mm 41mm 1fr 14mm 12mm; align-items:center; gap:2mm; }
+    #page2 .bars-wrap{ flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:1mm 0;}
+    #page2 .bar-row{ display:grid; grid-template-columns: 7mm 41mm 1fr 14mm 12mm; align-items:center; gap:2mm; min-height:6.5mm; }
     #page2 .bar-scale{ height:5.5mm; }
     #page2 .bar-rank{
       font-family:var(--font-display); font-weight:800; font-size:8pt; color:#fff;
@@ -570,7 +570,7 @@ html,body{
     }
     #page2 .bar-row.top .bar-rank{ background:var(--purple-dark); }
     #page2 .bar-commune{ font-family:var(--font-body); font-weight:700; font-size:8.2pt; color:var(--ink); line-height:1.1; }
-    #page2 .bar-scale{ width:100%; height:4.8mm; background:#F2EEF1; border-radius:5px; overflow:hidden; }
+    #page2 .bar-scale{ width:100%; height:5.5mm; background:#F2EEF1; border-radius:5px; overflow:hidden; }
     #page2 .bar-fill{ height:100%; display:flex; border-radius:5px; overflow:hidden; }
     #page2 .bar-seg{ height:100%; }
     #page2 .bar-total{ text-align:right; font-family:var(--font-display); font-weight:800; font-size:8.8pt; color:var(--plum); }
@@ -1324,6 +1324,45 @@ html,body{
       line-height:1.24;
       color:var(--ink-soft);
     }
+    #page6 .carto-card{
+      flex-direction:row !important;
+      align-items:center;
+      gap:5mm !important;
+    }
+    #page6 .carto-left{ flex:1; display:flex; flex-direction:column; gap:1mm; }
+    #page6 .carto-stat{
+      flex:0 0 38mm;
+      background:linear-gradient(135deg, var(--magenta), #B5275C);
+      border-radius:12px;
+      padding:3mm 3mm 3.2mm;
+      text-align:center;
+      color:#fff;
+      box-shadow:0 4px 10px rgba(180,60,120,0.22);
+    }
+    #page6 .carto-stat .cs-arrow{
+      font-family:var(--font-display);
+      font-weight:900;
+      font-size:24pt;
+      line-height:1;
+      letter-spacing:-0.02em;
+    }
+    #page6 .carto-stat .cs-label{
+      font-family:var(--font-body);
+      font-weight:700;
+      font-size:7.6pt;
+      text-transform:uppercase;
+      letter-spacing:0.06em;
+      margin-top:1mm;
+      opacity:0.95;
+    }
+    #page6 .carto-stat .cs-sub{
+      font-family:var(--font-display);
+      font-weight:700;
+      font-size:8.4pt;
+      margin-top:1.2mm;
+      opacity:0.92;
+    }
+    #page6 .carto-stat .cs-sub span{ margin:0 2px; opacity:0.7; }
     #page6 .cpom-band{
       border-radius:14px;
       background:linear-gradient(120deg, var(--purple-dark), var(--plum));
@@ -1420,10 +1459,17 @@ html,body{
         <div class="rm-text">Partenariat avec l'événement local « Festi Roche » : présence de l'ARSEF pour renforcer la visibilité et le lien avec le territoire.</div>
       </div>
 
-      <div class="rm-card" style="background:var(--pink); grid-column: span 2;">
-        <span class="rm-tag" style="background:var(--magenta);">Analyse</span>
-        <div class="rm-title">Cartographie des interventions &amp; heures supplémentaires</div>
-        <div class="rm-text">Déploiement d'une cartographie fine des interventions pour optimiser les tournées, identifier les zones sous-couvertes et mieux piloter les heures supplémentaires par service.</div>
+      <div class="rm-card carto-card" style="background:var(--pink); grid-column: span 2;">
+        <div class="carto-left">
+          <span class="rm-tag" style="background:var(--magenta);">Pilotage outil</span>
+          <div class="rm-title">Logiciel de pointage &amp; cartographie</div>
+          <div class="rm-text">Investissement dans un nouvel outil de pointage et cartographie des interventions : fiabilisation des heures/kilomètres, suppression des déclarations manuelles, optimisation des tournées.</div>
+        </div>
+        <div class="carto-stat">
+          <div class="cs-arrow">−46 %</div>
+          <div class="cs-label">heures supplémentaires</div>
+          <div class="cs-sub">2 287 h <span>→</span> 1 219 h</div>
+        </div>
       </div>
 
       <div class="rm-card" style="background:linear-gradient(120deg, var(--plum), var(--purple-dark)); grid-column: span 2;">
