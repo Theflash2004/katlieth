@@ -590,24 +590,32 @@ html,body{
     #page2 .bottom-callout p{ font-family:var(--font-body); font-size:9.3pt; line-height:1.32; }
 
     #page2 .tier-viz{
-      margin-top:2.5mm;
-      padding:2.2mm 4mm 2.5mm;
-      background:#F7F3FB;
-      border-radius:12px;
-      border:1.5px solid var(--lavender);
+      margin-top:3mm;
+      padding:4mm 5mm 4.5mm;
+      background:linear-gradient(135deg, #F7F3FB, #FBF6FE);
+      border-radius:16px;
+      border:2px solid var(--lavender);
     }
     #page2 .tier-head{
-      font-family:var(--font-display); font-weight:700; font-size:7.8pt;
-      color:var(--plum); text-transform:uppercase; letter-spacing:0.04em;
-      margin-bottom:1.8mm;
+      display:flex; align-items:baseline; justify-content:space-between;
+      margin-bottom:3mm;
+    }
+    #page2 .tier-head .th-title{
+      font-family:var(--font-display); font-weight:800; font-size:10.5pt;
+      color:var(--plum);
+    }
+    #page2 .tier-head .th-sub{
+      font-family:var(--font-body); font-weight:700; font-size:7.6pt;
+      color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.04em;
     }
     #page2 .tier-bar{
-      height:6mm; border-radius:6px; overflow:hidden; display:flex; width:100%;
-      margin-bottom:1.8mm;
+      height:11mm; border-radius:8px; overflow:hidden; display:flex; width:100%;
+      margin-bottom:3mm; box-shadow:0 3px 10px rgba(110,58,140,0.12);
     }
     #page2 .tier-seg{
       height:100%; display:flex; align-items:center; justify-content:center;
-      font-family:var(--font-display); font-weight:800; font-size:7.8pt; color:#fff;
+      font-family:var(--font-display); font-weight:900; font-size:14pt; color:#fff;
+      letter-spacing:-0.01em;
     }
     #page2 .tier-labels{
       display:flex; width:100%;
@@ -616,13 +624,13 @@ html,body{
       display:flex; flex-direction:column; padding-right:3mm;
     }
     #page2 .tier-lbl .tl-ppl{
-      font-family:var(--font-display); font-weight:900; font-size:10.5pt; color:var(--ink); line-height:1;
+      font-family:var(--font-display); font-weight:900; font-size:13pt; color:var(--ink); line-height:1;
     }
     #page2 .tier-lbl .tl-sub{
-      font-family:var(--font-body); font-weight:600; font-size:6.8pt; color:var(--ink-soft); line-height:1.2; margin-top:0.5mm;
+      font-family:var(--font-body); font-weight:600; font-size:7.6pt; color:var(--ink-soft); line-height:1.25; margin-top:1.2mm;
     }
     #page2 .tier-lbl .tl-dot{
-      display:inline-block; width:6px; height:6px; border-radius:2px; margin-right:3px; vertical-align:middle;
+      display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:4px; vertical-align:middle;
     }
   </style>
 
@@ -692,24 +700,27 @@ html,body{
     </div>
 
     <div class="tier-viz">
-      <div class="tier-head">Indice de concentration — poids relatif des communes</div>
+      <div class="tier-head">
+        <div class="th-title">Indice de concentration territoriale</div>
+        <div class="th-sub">Poids relatif des communes sur les 481 personnes</div>
+      </div>
       <div class="tier-bar">
-        <div class="tier-seg" style="width:46.8%;background:var(--magenta);">47%</div>
-        <div class="tier-seg" style="width:31.2%;background:var(--purple);">31%</div>
-        <div class="tier-seg" style="width:22%;background:var(--orange);">22%</div>
+        <div class="tier-seg" style="width:46.8%;background:var(--magenta);">47 %</div>
+        <div class="tier-seg" style="width:31.2%;background:var(--purple);">31 %</div>
+        <div class="tier-seg" style="width:22%;background:var(--orange);">22 %</div>
       </div>
       <div class="tier-labels">
         <div class="tier-lbl" style="width:46.8%;">
-          <span class="tl-ppl"><span class="tl-dot" style="background:var(--magenta);"></span>225 pers.</span>
-          <span class="tl-sub">1 commune<br>(Roche-la-Molière)</span>
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--magenta);"></span>225 personnes</span>
+          <span class="tl-sub"><strong>1 commune</strong> — Roche-la-Molière</span>
         </div>
         <div class="tier-lbl" style="width:31.2%;">
-          <span class="tl-ppl"><span class="tl-dot" style="background:var(--purple);"></span>150 pers.</span>
-          <span class="tl-sub">2 communes<br>(Saint-Étienne &amp; Saint-Genest)</span>
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--purple);"></span>150 personnes</span>
+          <span class="tl-sub"><strong>2 communes</strong> — Saint-Étienne &amp; Saint-Genest-Lerpt</span>
         </div>
         <div class="tier-lbl" style="width:22%;">
-          <span class="tl-ppl"><span class="tl-dot" style="background:var(--orange);"></span>106 pers.</span>
-          <span class="tl-sub">10 communes<br>secondaires</span>
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--orange);"></span>106 personnes</span>
+          <span class="tl-sub"><strong>10 communes</strong> secondaires</span>
         </div>
       </div>
     </div>
@@ -959,6 +970,50 @@ html,body{
     #page4 .mc-absentee{ font-family:var(--font-body); font-size:8pt; color:var(--ink-soft); font-weight:600; border-top:1px solid rgba(110,58,140,0.2); padding-top:2mm; margin-top:1mm;}
     #page4 .mc-absentee strong{ color:var(--purple-dark);}
 
+    /* ===== TOOL ACHIEVEMENT BAND ===== */
+    #page4 .tool-band{
+      margin-top:2.5mm;
+      border-radius:14px;
+      background:linear-gradient(120deg, #FFF3F8, var(--pink));
+      border:1.5px solid #F0CDDF;
+      padding:3mm 4mm;
+      display:flex; align-items:center; gap:5mm;
+    }
+    #page4 .tool-band .tb-left{ flex:1; }
+    #page4 .tool-band .tb-eyebrow{
+      font-family:var(--font-body); font-weight:800; font-size:7pt;
+      text-transform:uppercase; letter-spacing:0.06em; color:var(--magenta);
+    }
+    #page4 .tool-band .tb-title{
+      font-family:var(--font-display); font-weight:800; font-size:11.5pt;
+      color:var(--plum); line-height:1.1; margin-top:0.6mm;
+    }
+    #page4 .tool-band .tb-text{
+      font-family:var(--font-body); font-weight:500; font-size:8pt;
+      line-height:1.28; color:var(--ink-soft); margin-top:1mm;
+    }
+    #page4 .tool-band .tb-stat{
+      flex:0 0 42mm;
+      background:linear-gradient(135deg, var(--magenta), #B5275C);
+      border-radius:12px;
+      padding:2.8mm 3mm;
+      text-align:center; color:#fff;
+      box-shadow:0 4px 10px rgba(180,60,120,0.22);
+    }
+    #page4 .tool-band .tb-arrow{
+      font-family:var(--font-display); font-weight:900; font-size:22pt;
+      line-height:1; letter-spacing:-0.02em;
+    }
+    #page4 .tool-band .tb-label{
+      font-family:var(--font-body); font-weight:700; font-size:7.2pt;
+      text-transform:uppercase; letter-spacing:0.05em; margin-top:0.8mm; opacity:0.95;
+    }
+    #page4 .tool-band .tb-sub{
+      font-family:var(--font-display); font-weight:700; font-size:8pt;
+      margin-top:1mm; opacity:0.92;
+    }
+    #page4 .tool-band .tb-sub span{ margin:0 2px; opacity:0.7; }
+
     /* ===== ORG + QVCT SECTION ===== */
     #page4 .org-row{ display:flex; gap:4mm; flex:1; margin-top:0; min-height:0; }
 
@@ -1053,6 +1108,19 @@ html,body{
           <div></div>
         </div>
         <div class="mc-absentee">Absentéisme 2025 : <strong>12,54 %</strong> (↓ 17,79 % en 2024) · forte baisse des arrêts longs (30–90 j) · turn-over en baisse de 13 pts</div>
+      </div>
+    </div>
+
+    <div class="tool-band">
+      <div class="tb-left">
+        <div class="tb-eyebrow">Pilotage RH · Nouvel outil 2025</div>
+        <div class="tb-title">Logiciel de pointage &amp; cartographie des interventions</div>
+        <div class="tb-text">Fiabilisation des heures et kilomètres, suppression des déclarations manuelles, optimisation des tournées et meilleur pilotage de la charge terrain.</div>
+      </div>
+      <div class="tb-stat">
+        <div class="tb-arrow">−46 %</div>
+        <div class="tb-label">heures supplémentaires</div>
+        <div class="tb-sub">2 287 h <span>→</span> 1 219 h</div>
       </div>
     </div>
 
@@ -1457,19 +1525,6 @@ html,body{
         <span class="rm-tag" style="background:var(--orange-dark);">Partenariat</span>
         <div class="rm-title">Festi Roche</div>
         <div class="rm-text">Partenariat avec l'événement local « Festi Roche » : présence de l'ARSEF pour renforcer la visibilité et le lien avec le territoire.</div>
-      </div>
-
-      <div class="rm-card carto-card" style="background:var(--pink); grid-column: span 2;">
-        <div class="carto-left">
-          <span class="rm-tag" style="background:var(--magenta);">Pilotage outil</span>
-          <div class="rm-title">Logiciel de pointage &amp; cartographie</div>
-          <div class="rm-text">Investissement dans un nouvel outil de pointage et cartographie des interventions : fiabilisation des heures/kilomètres, suppression des déclarations manuelles, optimisation des tournées.</div>
-        </div>
-        <div class="carto-stat">
-          <div class="cs-arrow">−46 %</div>
-          <div class="cs-label">heures supplémentaires</div>
-          <div class="cs-sub">2 287 h <span>→</span> 1 219 h</div>
-        </div>
       </div>
 
       <div class="rm-card" style="background:linear-gradient(120deg, var(--plum), var(--purple-dark)); grid-column: span 2;">
