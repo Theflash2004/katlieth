@@ -588,6 +588,42 @@ html,body{
     }
     #page2 .bottom-callout .label-text{ color:var(--orange); margin-bottom:2mm; }
     #page2 .bottom-callout p{ font-family:var(--font-body); font-size:9.3pt; line-height:1.32; }
+
+    #page2 .tier-viz{
+      margin-top:2.5mm;
+      padding:2.2mm 4mm 2.5mm;
+      background:#F7F3FB;
+      border-radius:12px;
+      border:1.5px solid var(--lavender);
+    }
+    #page2 .tier-head{
+      font-family:var(--font-display); font-weight:700; font-size:7.8pt;
+      color:var(--plum); text-transform:uppercase; letter-spacing:0.04em;
+      margin-bottom:1.8mm;
+    }
+    #page2 .tier-bar{
+      height:6mm; border-radius:6px; overflow:hidden; display:flex; width:100%;
+      margin-bottom:1.8mm;
+    }
+    #page2 .tier-seg{
+      height:100%; display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-weight:800; font-size:7.8pt; color:#fff;
+    }
+    #page2 .tier-labels{
+      display:flex; width:100%;
+    }
+    #page2 .tier-lbl{
+      display:flex; flex-direction:column; padding-right:3mm;
+    }
+    #page2 .tier-lbl .tl-ppl{
+      font-family:var(--font-display); font-weight:900; font-size:10.5pt; color:var(--ink); line-height:1;
+    }
+    #page2 .tier-lbl .tl-sub{
+      font-family:var(--font-body); font-weight:600; font-size:6.8pt; color:var(--ink-soft); line-height:1.2; margin-top:0.5mm;
+    }
+    #page2 .tier-lbl .tl-dot{
+      display:inline-block; width:6px; height:6px; border-radius:2px; margin-right:3px; vertical-align:middle;
+    }
   </style>
 
   <div class="pageheader">
@@ -651,6 +687,29 @@ html,body{
           <div class="bar-row"><div class="bar-rank">11</div><div class="bar-commune">Saint-Jean-Bonnefonds</div><div class="bar-scale"><div class="bar-fill" style="width:1.3%;"><div class="bar-seg" style="width:100%;background:var(--magenta);"></div></div></div><div class="bar-total">3</div><div class="bar-pct">0,6%</div></div>
           <div class="bar-row"><div class="bar-rank">12</div><div class="bar-commune">Fraisses</div><div class="bar-scale"><div class="bar-fill" style="width:0.6%;"><div class="bar-seg" style="width:100%;background:var(--purple);"></div></div></div><div class="bar-total">1</div><div class="bar-pct">0,2%</div></div>
           <div class="bar-row"><div class="bar-rank">13</div><div class="bar-commune">L'Étrat</div><div class="bar-scale"><div class="bar-fill" style="width:0.6%;"><div class="bar-seg" style="width:100%;background:var(--purple);"></div></div></div><div class="bar-total">1</div><div class="bar-pct">0,2%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-viz">
+      <div class="tier-head">Indice de concentration — poids relatif des communes</div>
+      <div class="tier-bar">
+        <div class="tier-seg" style="width:46.8%;background:var(--magenta);">47%</div>
+        <div class="tier-seg" style="width:31.2%;background:var(--purple);">31%</div>
+        <div class="tier-seg" style="width:22%;background:var(--orange);">22%</div>
+      </div>
+      <div class="tier-labels">
+        <div class="tier-lbl" style="width:46.8%;">
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--magenta);"></span>225 pers.</span>
+          <span class="tl-sub">1 commune<br>(Roche-la-Molière)</span>
+        </div>
+        <div class="tier-lbl" style="width:31.2%;">
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--purple);"></span>150 pers.</span>
+          <span class="tl-sub">2 communes<br>(Saint-Étienne &amp; Saint-Genest)</span>
+        </div>
+        <div class="tier-lbl" style="width:22%;">
+          <span class="tl-ppl"><span class="tl-dot" style="background:var(--orange);"></span>106 pers.</span>
+          <span class="tl-sub">10 communes<br>secondaires</span>
         </div>
       </div>
     </div>
